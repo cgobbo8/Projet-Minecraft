@@ -1,0 +1,32 @@
+
+
+.BG{
+
+	-fx-background-image: url("ressources/wallpaper.jpg") ;
+	-fx-background-size: contain ;
+	-fx-background-repeat: no-repeat ;
+}
+
+.BG2{
+
+	-fx-background-color:black;
+}
+
+.fondInventaire{
+	-fx-background-color:#C6C6C6;
+}
+
+
+.buttonMenus{
+	-fx-background-image: url("ressources/btn1.png") ;
+	-fx-background-size: contain ;
+	-fx-background-repeat: no-repeat ;
+}
+
+.buttonMenus:hover{
+
+	-fx-background-image: url("ressources/btn2.png") ;
+	-fx-background-size: contain ;
+	-fx-background-repeat: no-repeat ;
+	}
+	

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language JavaScript?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1099.0" styleClass="BG" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controlleur">
+   <children>
+      <AnchorPane fx:id="bgopacity" opacity="0.0" prefHeight="619.0" prefWidth="1099.0" styleClass="BG2" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="menuprinc" prefHeight="619.0" prefWidth="1099.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="titre" fitHeight="128.0" fitWidth="614.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="437.16947174072266" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="259.0" AnchorPane.topAnchor="54.0">
+               <image>
+                  <Image url="@../../imgs/minecraft-titre.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ImageView>
+            <Button fx:id="btnplay" layoutX="282.0" layoutY="283.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#supp" prefHeight="53.0" prefWidth="503.0" styleClass="buttonMenus" stylesheets="@application.css" text="PLAY" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="settings" layoutX="282.0" layoutY="353.0" mnemonicParsing="false" onAction="#setting" prefHeight="53.0" prefWidth="503.0" styleClass="buttonMenus" stylesheets="@application.css" text="SETTINGS" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="exit" layoutX="282.0" layoutY="420.0" mnemonicParsing="false" onAction="#exit" prefHeight="53.0" prefWidth="503.0" styleClass="buttonMenus" stylesheets="@application.css" text="EXIT" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelSetting" opacity="0.0" prefHeight="383.0" prefWidth="801.0" visible="false" AnchorPane.leftAnchor="134.0" AnchorPane.topAnchor="200.0">
+         <children>
+            <Button layoutX="41.0" layoutY="58.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="352.0" styleClass="buttonMenus" stylesheets="@application.css" text="Music" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="41.0" layoutY="114.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="352.0" styleClass="buttonMenus" stylesheets="@application.css" text="Other" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="413.0" layoutY="58.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="352.0" styleClass="buttonMenus" stylesheets="@application.css" text="Mode" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="413.0" layoutY="114.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="352.0" styleClass="buttonMenus" stylesheets="@application.css" text="Sound" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="settingCancel" layoutX="146.0" layoutY="244.0" mnemonicParsing="false" onAction="#cancel" prefHeight="53.0" prefWidth="509.0" styleClass="buttonMenus" stylesheets="@application.css" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <BorderPane fx:id="inventaire" layoutX="100.0" layoutY="100.0" opacity="0.0" prefHeight="600.0" prefWidth="1200.0" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                  <Tab text="Base">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondInventaire" stylesheets="@application.css">
+                           <children>
+                              <ScrollPane layoutX="97.0" layoutY="-2.0" prefHeight="374.0" prefWidth="699.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="559.0" prefWidth="613.0" styleClass="fondInventaire" stylesheets="@application.css">
+                                       <children>
+                                          <Label layoutX="208.0" layoutY="14.0" text="Elements de base">
+                                             <font>
+                                                <Font name="Minecraft" size="23.0" />
+                                             </font>
+                                          </Label>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                <Tab text="Guerre">
+                     <content>
+                        <AnchorPane prefHeight="155.0" prefWidth="625.0" styleClass="fondInventaire" stylesheets="@application.css">
+                           <children>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="613.0" styleClass="fondInventaire" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="243.0" layoutY="14.0" text="Armes">
+                                       <font>
+                                          <Font name="Minecraft" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="58.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="118.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="237.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="177.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="112.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="457.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="386.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="35.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="320.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="296.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="181.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c" height="47.0" layoutX="252.0" layoutY="356.0" stroke="BLACK" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" styleClass="crafts" width="54.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                </Tab>
+                  <Tab text="Oui">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondInventaire" stylesheets="@application.css" />
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+         <right>
+            <AnchorPane prefHeight="419.0" prefWidth="285.0" styleClass="fondInventaire" stylesheets="@application.css" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
