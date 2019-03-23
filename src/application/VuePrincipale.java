@@ -17,6 +17,12 @@ import javafx.stage.Stage;
 public class VuePrincipale extends Application {
 
 	MediaPlayer clic; 
+	public static double mousex;
+	public static double mousey;
+	public static double posIX;
+	public static double posIY;
+	public static double posFX;
+	public static double posFY;
 	
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -24,6 +30,8 @@ public class VuePrincipale extends Application {
     	try {
             Parent root = FXMLLoader.load(getClass().getResource("jeu.fxml"));
             Scene scene = new Scene(root, 1099, 619);
+
+            
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("MineCraft");
             primaryStage.setScene(scene);
@@ -33,6 +41,18 @@ public class VuePrincipale extends Application {
             	clic.setVolume(0.5) ;
             	clic.play();
             });
+            
+            posIX = root.getChildrenUnmodifiable().get(3).getLayoutX();
+            posIX = root.getChildrenUnmodifiable().get(3).getLayoutY();
+
+    		root.addEventFilter(MouseEvent.MOUSE_MOVED, e ->{
+    			mousex = e.getX();
+    			mousey = e.getY();
+    			System.out.println(mousex - posIX);
+    			posFX = mousex - posIX;
+    			posFY = mousey - posIY;
+    		});
+
             
             primaryStage.show();
 		} catch (Exception e) {
