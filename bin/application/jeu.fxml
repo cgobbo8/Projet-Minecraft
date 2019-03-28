@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language JavaScript?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1099.0" styleClass="BG" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="bgopacity" opacity="0.0" prefHeight="619.0" prefWidth="1099.0" styleClass="BG2" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="menuprinc" prefHeight="619.0" prefWidth="1099.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="titre" fitHeight="128.0" fitWidth="614.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="437.16947174072266" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="259.0" AnchorPane.topAnchor="54.0">
+               <image>
+                  <Image url="@../../imgs/minecraft-titre.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ImageView>
+            <Button fx:id="btnplay" layoutX="282.0" layoutY="283.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#supp" prefHeight="53.0" prefWidth="503.0" styleClass="buttonMenus" stylesheets="@application.css" text="PLAY" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="settings" layoutX="282.0" layoutY="353.0" mnemonicParsing="false" onAction="#setting" prefHeight="53.0" prefWidth="503.0" styleClass="buttonMenus" stylesheets="@application.css" text="SETTINGS" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="exit" layoutX="282.0" layoutY="420.0" mnemonicParsing="false" onAction="#exit" prefHeight="53.0" prefWidth="503.0" styleClass="buttonMenus" stylesheets="@application.css" text="EXIT" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelSetting" opacity="0.0" prefHeight="383.0" prefWidth="801.0" visible="false" AnchorPane.leftAnchor="134.0" AnchorPane.topAnchor="200.0">
+         <children>
+            <Button layoutX="41.0" layoutY="58.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="352.0" styleClass="buttonMenus" stylesheets="@application.css" text="Music" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="41.0" layoutY="114.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="352.0" styleClass="buttonMenus" stylesheets="@application.css" text="Other" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="413.0" layoutY="58.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="352.0" styleClass="buttonMenus" stylesheets="@application.css" text="Mode" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="413.0" layoutY="114.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="352.0" styleClass="buttonMenus" stylesheets="@application.css" text="Sound" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="settingCancel" layoutX="146.0" layoutY="244.0" mnemonicParsing="false" onAction="#cancel" prefHeight="53.0" prefWidth="509.0" styleClass="buttonMenus" stylesheets="@application.css" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="Minecraft" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="inventaire" layoutX="140.0" layoutY="87.0" opacity="0.0" prefHeight="446.0" prefWidth="933.0" visible="false">
+         <children>
+            <TabPane layoutX="-79.0" layoutY="-9.0" prefHeight="383.0" prefWidth="614.0" snapToPixel="false" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="100.0" tabMinHeight="70.0" tabMinWidth="50.0">
+              <tabs>
+                  <Tab fx:id="tab1" closable="false" styleClass="cur">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="559.0" styleClass="fondInventaire" stylesheets="@application.css">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" stylesheets="@application.css" translateX="15.0">
+                                       <children>
+                                          <Label layoutX="191.0" layoutY="14.0" text="Blocs élementaires">
+                                             <font>
+                                                <Font name="Minecraft" size="23.0" />
+                                             </font>
+                                          </Label>
+                                          <BorderPane fx:id="case1211" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                                             <center>
+                                                <Rectangle fx:id="case1" arcHeight="5.0" arcWidth="5.0" fill="#b760c3" height="33.0" stroke="BLACK" strokeType="INSIDE" width="44.0" BorderPane.alignment="CENTER" />
+                                             </center></BorderPane>
+                                          <BorderPane layoutX="96.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="40.0" top="-100.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                     <graphic>
+                        <ImageView fx:id="ong41" fitHeight="49.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../../imgs/imgs%20onglet/bloc.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Tab>
+                  <Tab fx:id="tab2" closable="false" styleClass="cur">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="559.0" styleClass="fondInventaire" stylesheets="@application.css">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" stylesheets="@application.css" translateX="15.0">
+                                       <children>
+                                          <Label layoutX="250.0" layoutY="14.0" text="Outils">
+                                             <font>
+                                                <Font name="Minecraft" size="23.0" />
+                                             </font>
+                                          </Label>
+                                          <BorderPane fx:id="case1212" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="40.0" top="-100.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                     <graphic>
+                        <ImageView fx:id="ong42" fitHeight="49.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../../imgs/imgs%20onglet/stone_pickaxe.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Tab>
+                  <Tab fx:id="tab3" closable="false" styleClass="cur">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="559.0" styleClass="fondInventaire" stylesheets="@application.css">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" stylesheets="@application.css" translateX="15.0">
+                                       <children>
+                                          <Label layoutX="208.0" layoutY="14.0" text="Nourriture">
+                                             <font>
+                                                <Font name="Minecraft" size="23.0" />
+                                             </font>
+                                          </Label>
+                                          <BorderPane fx:id="case1213" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="40.0" top="-100.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                     <graphic>
+                        <ImageView fx:id="ong43" fitHeight="49.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../../imgs/imgs%20onglet/apple.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Tab>
+                  <Tab fx:id="tab4" closable="false" styleClass="cur">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="559.0" styleClass="fondInventaire" stylesheets="@application.css">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" stylesheets="@application.css" translateX="15.0">
+                                       <children>
+                                          <Label layoutX="250.0" layoutY="14.0" text="Combat">
+                                             <font>
+                                                <Font name="Minecraft" size="23.0" />
+                                             </font>
+                                          </Label>
+                                          <BorderPane fx:id="case121" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="40.0" top="-100.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                     <graphic>
+                        <ImageView fx:id="ong4" fitHeight="49.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../imgs/imgs%20onglet/stone_sword.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                  </Tab>
+                  <Tab fx:id="tab41" closable="false" disable="true" styleClass="remp">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="559.0" stylesheets="@application.css">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" styleClass="fondInventaire" stylesheets="@application.css" translateX="15.0">
+                                       <children>
+                                          <Label layoutX="250.0" layoutY="14.0" text="Combat">
+                                             <font>
+                                                <Font name="Minecraft" size="23.0" />
+                                             </font>
+                                          </Label>
+                                          <BorderPane fx:id="case1214" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="40.0" top="-100.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <styleClass>
+                              <String fx:value="fondInventaire" />
+                              <String fx:value="remp" />
+                           </styleClass>
+                        </AnchorPane>
+                     </content>
+                     <graphic>
+                        <ImageView fx:id="ong44" fitHeight="49.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../../imgs/imgs%20onglet/stone_sword.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Tab>
+                  <Tab fx:id="tab411" closable="false" disable="true" styleClass="remp">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="559.0" stylesheets="@application.css">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" styleClass="fondInventaire" stylesheets="@application.css" translateX="15.0">
+                                       <children>
+                                          <Label layoutX="250.0" layoutY="14.0" text="Combat">
+                                             <font>
+                                                <Font name="Minecraft" size="23.0" />
+                                             </font>
+                                          </Label>
+                                          <BorderPane fx:id="case12141" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="40.0" top="-100.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <styleClass>
+                              <String fx:value="fondInventaire" />
+                              <String fx:value="remp" />
+                           </styleClass>
+                        </AnchorPane>
+                     </content>
+                     <graphic>
+                        <ImageView fx:id="ong441" fitHeight="49.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../../imgs/imgs%20onglet/stone_sword.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Tab>
+                  <Tab fx:id="tab4111" closable="false" disable="true" styleClass="remp">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" opacity="0.0" prefHeight="301.0" prefWidth="559.0" stylesheets="@application.css">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" styleClass="fondInventaire" stylesheets="@application.css" translateX="15.0">
+                                       <children>
+                                          <Label layoutX="250.0" layoutY="14.0" text="Combat">
+                                             <font>
+                                                <Font name="Minecraft" size="23.0" />
+                                             </font>
+                                          </Label>
+                                          <BorderPane fx:id="case121411" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="40.0" top="-100.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <styleClass>
+                              <String fx:value="fondInventaire" />
+                              <String fx:value="remp" />
+                           </styleClass>
+                        </AnchorPane>
+                     </content>
+                     <graphic>
+                        <ImageView fx:id="ong4411" fitHeight="49.0" fitWidth="53.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../../imgs/imgs%20onglet/stone_sword.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Tab>
+                  <Tab fx:id="tab5" closable="false" styleClass="cur">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="559.0" styleClass="fondInventaire" stylesheets="@application.css">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" stylesheets="@application.css" translateX="15.0">
+                                       <children>
+                                          <Label layoutX="196.0" layoutY="14.0" text="Tous les éléments">
+                                             <font>
+                                                <Font name="Minecraft" size="23.0" />
+                                             </font>
+                                          </Label>
+                                          <BorderPane fx:id="case1214111" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="116.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="174.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="164.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="437.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="290.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="28.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="232.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="300.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="232.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="369.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane layoutX="96.0" layoutY="348.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="40.0" top="-100.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                     <graphic>
+                        <ImageView fx:id="ong44111" fitHeight="49.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../../imgs/imgs%20onglet/bloc.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Tab>
+              </tabs>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TabPane>
+            <AnchorPane layoutX="581.0" layoutY="-9.0" prefHeight="383.0" prefWidth="258.0" styleClass="fondInventaire" stylesheets="@application.css">
+               <children>
+                  <BorderPane layoutX="31.0" layoutY="176.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane layoutX="99.0" layoutY="176.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane layoutX="167.0" layoutY="176.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane layoutX="98.0" layoutY="234.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane layoutX="166.0" layoutY="234.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane layoutX="30.0" layoutY="234.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane layoutX="30.0" layoutY="293.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane layoutX="98.0" layoutY="293.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane layoutX="166.0" layoutY="293.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane layoutX="99.0" layoutY="35.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <Polygon fill="#959595" layoutX="131.0" layoutY="120.0" scaleX="0.4" scaleY="0.3" stroke="TRANSPARENT" strokeLineJoin="BEVEL" strokeType="INSIDE">
+                    <points>
+                      <Double fx:value="-50.0" />
+                      <Double fx:value="40.0" />
+                      <Double fx:value="50.0" />
+                      <Double fx:value="40.0" />
+                      <Double fx:value="0.0" />
+                      <Double fx:value="-60.0" />
+                    </points>
+                  </Polygon>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#959595" height="30.0" layoutX="122.0" layoutY="124.0" stroke="TRANSPARENT" strokeType="INSIDE" width="19.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
