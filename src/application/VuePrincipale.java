@@ -24,6 +24,7 @@ public class VuePrincipale extends Application {
     	
     	try {
     		Modele modl = new Modele();
+    		
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("jeu.fxml"));
     		Controller ctrl = new Controller(modl);
     		loader.setController(ctrl);
