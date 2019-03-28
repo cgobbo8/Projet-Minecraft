@@ -1,17 +1,12 @@
 package application;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class VuePrincipale extends Application {
@@ -28,7 +23,12 @@ public class VuePrincipale extends Application {
     public void start(Stage primaryStage) throws Exception{
     	
     	try {
-            Parent root = FXMLLoader.load(getClass().getResource("jeu.fxml"));
+    		Modele modl = new Modele();
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("jeu.fxml"));
+    		Controller ctrl = new Controller(modl);
+    		loader.setController(ctrl);
+            Parent root = (Parent) loader.load();
+
             Scene scene = new Scene(root, 1099, 619);
 
             
@@ -48,7 +48,6 @@ public class VuePrincipale extends Application {
     		root.addEventFilter(MouseEvent.MOUSE_MOVED, e ->{
     			mousex = e.getX();
     			mousey = e.getY();
-    			System.out.println(mousex - posIX);
     			posFX = mousex - posIX;
     			posFY = mousey - posIY;
     		});

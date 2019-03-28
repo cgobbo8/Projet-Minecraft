@@ -12,9 +12,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1099.0" styleClass="BG" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controlleur">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1099.0" styleClass="BG" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="bgopacity" opacity="0.0" prefHeight="619.0" prefWidth="1099.0" styleClass="BG2" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="bgopacity" opacity="0.0" prefHeight="619.0" prefWidth="1099.0" styleClass="BG2" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="menuprinc" prefHeight="619.0" prefWidth="1099.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="titre" fitHeight="128.0" fitWidth="614.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="437.16947174072266" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="259.0" AnchorPane.topAnchor="54.0">
@@ -112,7 +112,10 @@
                                                 <Font name="Minecraft" size="23.0" />
                                              </font>
                                           </Label>
-                                          <BorderPane fx:id="case1211" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                                          <BorderPane fx:id="case1211" layoutX="28.0" layoutY="58.0" onDragDetected="#draguer" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                                             <center>
+                                                <Rectangle fx:id="case1" arcHeight="5.0" arcWidth="5.0" fill="#b760c3" height="33.0" stroke="BLACK" strokeType="INSIDE" width="44.0" BorderPane.alignment="CENTER" />
+                                             </center></BorderPane>
                                           <BorderPane layoutX="96.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
                                           <BorderPane layoutX="232.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
                                           <BorderPane layoutX="164.0" layoutY="58.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />

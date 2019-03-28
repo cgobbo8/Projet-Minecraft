@@ -1,43 +1,34 @@
 package application;
 
-import java.awt.AWTException;
-import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.PointerInfo;
-import java.awt.Robot;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
-
-import javax.annotation.Resources;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-public class Controlleur implements Initializable {
+public class Controller implements Initializable {
+	
+	Modele modl;
 	
 	@FXML
 	private Button btnplay = new Button();
@@ -61,8 +52,7 @@ public class Controlleur implements Initializable {
 	private AnchorPane menuprinc = new AnchorPane();
 	@FXML
 	private TabPane elementBasis = new TabPane();
-	@FXML
-	private BorderPane case1 = new BorderPane();
+
 	@FXML
 	private Tab tab1 = new Tab();
 	@FXML
@@ -73,36 +63,70 @@ public class Controlleur implements Initializable {
 	private Tab tab4 = new Tab();
 	@FXML
 	private Tab tab5 = new Tab();
-	private StackPane stackPane;
-	
+	@FXML
+	private Rectangle case1;
+
+    
+    double orgSceneX, orgSceneY;
+    double orgTranslateX, orgTranslateY;
 	
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm())); 
-	public boolean case1dep = false;
+	
+	
+	public Controller(Modele m) {
+		this.modl = m;
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		tab5.setTooltip(new Tooltip("Tous les éléments"));
+		tab5.setTooltip(new Tooltip("Tous les elements"));
 		tab2.setTooltip(new Tooltip("Tous les outils"));
 		tab3.setTooltip(new Tooltip("Toute la nourriture"));
 		tab4.setTooltip(new Tooltip("Tous les armes"));
-		tab1.setTooltip(new Tooltip("Blocs élementaires"));
-	
+		tab1.setTooltip(new Tooltip("Blocs elementaires"));
+		
+		case1.setLayoutX(100);
+		case1.setLayoutY(100);
+		case1.setCursor(Cursor.HAND);
+		
+		case1.setOnMousePressed(circleOnMousePressedEventHandler);
+		case1.setOnMouseDragged(circleOnMouseDraggedEventHandler);
+
+
 	}
 	
-	public void draguer(Event e) {
-		case1dep = true;
-//		System.out.println(e);
-//		double posX = case1.getLayoutX();
-//		double posY = case1.getLayoutY();
-//		
-//		case1.setLayoutX(VuePrincipale.posFX);
-//		case1.setLayoutY(VuePrincipale.posFY);
-		this.case1.getChildren();
-	}
 	
+    EventHandler<MouseEvent> circleOnMousePressedEventHandler = 
+            new EventHandler<MouseEvent>() {
+     
+            @Override
+            public void handle(MouseEvent t) {
+                orgSceneX = t.getSceneX();
+                orgSceneY = t.getSceneY();
+                orgTranslateX = ((Rectangle)(t.getSource())).getTranslateX();
+                orgTranslateY = ((Rectangle)(t.getSource())).getTranslateY();
+                System.out.println(t.getSource());
+            }
+        };
+         
+        EventHandler<MouseEvent> circleOnMouseDraggedEventHandler = 
+            new EventHandler<MouseEvent>() {
+     
+            @Override
+            public void handle(MouseEvent t) {
+                double offsetX = t.getSceneX() - orgSceneX;
+                double offsetY = t.getSceneY() - orgSceneY;
+                double newTranslateX = orgTranslateX + offsetX;
+                double newTranslateY = orgTranslateY + offsetY;
+                 
+                ((Rectangle)(t.getSource())).setTranslateX(newTranslateX);
+                ((Rectangle)(t.getSource())).setTranslateY(newTranslateY);
+            }
+        };
+	
+
 
 	public void supp(Event e) throws InterruptedException {
-
 		Path path = new Path();
 		path.getElements().add(new MoveTo(307,titre.getLayoutY()+10));
 		path.getElements().add(new LineTo(307, -100));
@@ -133,7 +157,7 @@ public class Controlleur implements Initializable {
 		opacity.setToValue(0.5);
 		opacity.play();
 
-		music.play();
+//		music.play();
 		btsettings.onFinishedProperty().set(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
