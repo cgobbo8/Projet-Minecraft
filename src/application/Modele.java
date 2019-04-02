@@ -24,10 +24,43 @@ import javafx.util.Duration;
 public class Modele extends Observable {
 	
 	
-	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm())); 
+	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm()));
+	Craft[][] tableCraft = new Craft[3][3];
 
 	public Modele() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public void ajoutCraftDansTable(Craft c){
+		int i = 0;
+		int j = 0;
+		while(this.tableCraft[i][j] == null){
+			if(i <= 2){
+				if(j < 2){
+					j++;
+				}
+				else{
+					j = 0;
+					i++;
+				}
+			}
+		}
+		if(i < 3 && j < 3){
+			this.tableCraft[i][j] = c;
+		}
+	}
+
+	public Craft testCraft(){
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 3; j++){
+				for(int k = 0; k < this.tableCraft[i][j].getEnfants().size(); k++){
+					if(this.tableCraft.equals(this.tableCraft[i][j].getEnfants().get(k).getMatrice())){
+						return this.tableCraft[i][j].getEnfants().get(k);
+					}
+				}
+			}
+		}
+		return new Craft("vide", "null", new Craft[3][3], Craft.Type.BASE);
 	}
 	
 }
