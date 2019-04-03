@@ -55,5 +55,37 @@ public class Inventaire {
 			}
 		}
 	}
+	public void addCraft(Craft a) {
+		
+		switch(a.getType()) {
+		  case BLOC:
+			this.bloc.add(a);
+		    break;
+		  case COMBAT:
+		    this.combat.add(a);
+		    break;
+		  case OUTIL:
+			this.outil.add(a);
+			break;
+		  case NOURRITURE:
+			this.nourriture.add(a);
+			break;
+		  case REDSTONE:
+			this.redstone.add(a);
+			break;
+		  case DECO:
+			this.deco.add(a);
+			break;
+		  case BASE:
+		    this.base.add(a);
+			break;
+		  default:
+			break;
+		    
+		}
+	}
+	
+	
+	
 
 }
