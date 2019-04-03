@@ -12,12 +12,7 @@ import javafx.stage.Stage;
 public class VuePrincipale extends Application {
 
 	MediaPlayer clic; 
-	public static double mousex;
-	public static double mousey;
-	public static double posIX;
-	public static double posIY;
-	public static double posFX;
-	public static double posFY;
+
 	
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -38,20 +33,11 @@ public class VuePrincipale extends Application {
             primaryStage.setScene(scene);
            
             root.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+            	
             	clic = new MediaPlayer(new Media(getClass().getResource("ressources/clic.mp3").toExternalForm()));
             	clic.setVolume(0.5) ;
             	clic.play();
             });
-            
-            posIX = root.getChildrenUnmodifiable().get(3).getLayoutX();
-            posIX = root.getChildrenUnmodifiable().get(3).getLayoutY();
-
-    		root.addEventFilter(MouseEvent.MOUSE_MOVED, e ->{
-    			mousex = e.getX();
-    			mousey = e.getY();
-    			posFX = mousex - posIX;
-    			posFY = mousey - posIY;
-    		});
 
             
             primaryStage.show();

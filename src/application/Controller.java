@@ -157,7 +157,7 @@ public class Controller implements Initializable {
 		opacity.setToValue(0.5);
 		opacity.play();
 
-//		music.play();
+		music.play();
 		btsettings.onFinishedProperty().set(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
