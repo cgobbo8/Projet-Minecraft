@@ -110,8 +110,12 @@ public class Controller implements Initializable {
     
     		
          public void click(MouseEvent e) {
-        	 if(e.getSource().getClass()==Craft.class) {
-        		 
+        	 
+        	 if(e.getSource().getClass()==Craft.class ) {
+        		this.modl.ajoutCraftDansTable((Craft) e.getSource());
+        		if (this.modl.tableCraft[2][2] != null) {
+        			this.modl.testCraft();
+        		}
         	 }
         	 
          }
