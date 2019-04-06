@@ -25,35 +25,41 @@ public class Inventaire {
 		this.base = new ArrayList<>();
 		
 		
-		for (int i = 0;i<inventaire.size();i++) {
-			Type leType = inventaire.get(i).getType();
-			switch(leType) {
-			  case BLOC:
-				this.bloc.add(inventaire.get(i));
-			    break;
-			  case COMBAT:
-			    this.combat.add(inventaire.get(i));
-			    break;
-			  case OUTIL:
-				this.outil.add(inventaire.get(i));
-				break;
-			  case NOURRITURE:
-				this.nourriture.add(inventaire.get(i));
-				break;
-			  case REDSTONE:
-				this.redstone.add(inventaire.get(i));
-				break;
-			  case DECO:
-				this.deco.add(inventaire.get(i));
-				break;
-			  case BASE:
-			    this.base.add(inventaire.get(i));
-				break;
-			  default:
-				break;
-			    
-			}
+		}
+	
+	public void addCraft(Craft a) {
+		
+		this.inventaire.add(a);
+		
+		switch(a.getType()) {
+		  case BLOC:
+			this.bloc.add(a);
+		    break;
+		  case COMBAT:
+		    this.combat.add(a);
+		    break;
+		  case OUTIL:
+			this.outil.add(a);
+			break;
+		  case NOURRITURE:
+			this.nourriture.add(a);
+			break;
+		  case REDSTONE:
+			this.redstone.add(a);
+			break;
+		  case DECO:
+			this.deco.add(a);
+			break;
+		  case BASE:
+		    this.base.add(a);
+			break;
+		  default:
+			break;
+		    
 		}
 	}
+	
+	
+	
 
 }

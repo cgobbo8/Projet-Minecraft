@@ -4,6 +4,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.xml.stream.EventFilter;
+import javax.xml.stream.events.XMLEvent;
+
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
@@ -143,13 +146,22 @@ public class Controller implements Initializable {
      
             @Override
             public void handle(MouseEvent t) {
-                orgSceneX = t.getSceneX();
-                orgSceneY = t.getSceneY();
-                orgTranslateX = ((Rectangle)(t.getSource())).getTranslateX();
-                orgTranslateY = ((Rectangle)(t.getSource())).getTranslateY();
-                System.out.println(t.getSource());
+                
             }
         };
+    
+    		
+         public void click(MouseEvent e) {
+        	 
+        	 if(e.getSource().getClass()==Craft.class ) {
+        		this.modl.ajoutCraftDansTable((Craft) e.getSource());
+        		if (this.modl.tableCraft[2][2] != null) {
+        			this.modl.testCraft();
+        		}
+        	 }
+        	 
+         }
+         
          
         EventHandler<MouseEvent> circleOnMouseDraggedEventHandler = 
             new EventHandler<MouseEvent>() {

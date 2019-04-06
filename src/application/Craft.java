@@ -13,9 +13,10 @@ public class Craft extends Pane{
 	private Image img;
 	enum Type {BLOC,COMBAT,OUTIL,NOURRITURE,REDSTONE,DECO,BASE};
 	private Type type;
+	private boolean estTrouve = false;
 	
 	
-	public Craft(String n, String ip, Craft[][] c, Type t) {
+	public Craft(String n, String ip, Craft[][] c, Type t, Inventaire inv) {
 		this.nom = n;
 		this.type = t;
 		this.img = new Image(ip);
@@ -28,6 +29,7 @@ public class Craft extends Pane{
 				}
 			}
 		}
+		inv.addCraft(this);
 	}
 	
 	public static void main(String[] args) {
@@ -65,6 +67,14 @@ public class Craft extends Pane{
 	
 	public Type getType() {
 		return this.type;
+	}
+	
+	public boolean getEstTrouve() {
+		return this.estTrouve;
+	}
+	
+	public void setEstTrouve(boolean b) {
+		this.estTrouve = b;
 	}
 
 }
