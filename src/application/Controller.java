@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.animation.FadeTransition;
@@ -10,7 +11,6 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -18,6 +18,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.LineTo;
@@ -52,7 +53,6 @@ public class Controller implements Initializable {
 	private AnchorPane menuprinc = new AnchorPane();
 	@FXML
 	private TabPane elementBasis = new TabPane();
-
 	@FXML
 	private Tab tab1 = new Tab();
 	@FXML
@@ -64,7 +64,19 @@ public class Controller implements Initializable {
 	@FXML
 	private Tab tab5 = new Tab();
 	@FXML
-	private Rectangle case1;
+	private AnchorPane pane1;
+	@FXML
+	private AnchorPane pane2;
+	@FXML
+	private AnchorPane pane3;
+	@FXML
+	private AnchorPane pane4;
+	Button btn;
+	
+	ArrayList<BorderPane> listeBloc = new ArrayList<BorderPane>();
+	BorderPane bp;
+	int caseX = 25;
+	int caseY = 80;
 
     
     double orgSceneX, orgSceneY;
@@ -85,14 +97,44 @@ public class Controller implements Initializable {
 		tab4.setTooltip(new Tooltip("Tous les armes"));
 		tab1.setTooltip(new Tooltip("Blocs elementaires"));
 		
-		case1.setLayoutX(100);
-		case1.setLayoutY(100);
-		case1.setCursor(Cursor.HAND);
+		initialisationPane(pane1);
+		initialisationPane(pane2);
+		initialisationPane(pane3);
+		initialisationPane(pane4);
 		
-		case1.setOnMousePressed(circleOnMousePressedEventHandler);
-		case1.setOnMouseDragged(circleOnMouseDraggedEventHandler);
+//		PEUT ETRE SERVIALBLE POUR LA SUITE 
+		/**
+		tab1.setOnSelectionChanged(new EventHandler<Event>() {
+			@Override
+			public void handle(Event e) {
 
-
+			}
+		});**/
+	}
+	
+	public void initialisationPane(AnchorPane a) {
+		caseX = 20;
+		caseY = 80;
+		for (int i = 0; i < 6; i++) {
+			caseX = 25;
+			
+			for (int j = 0; j < 9; j++) {
+				bp = new BorderPane();
+				bp.setId("caseCraft");
+				bp.setPrefSize(50, 50);
+				bp.setLayoutX(caseX);
+				bp.setLayoutY(caseY);
+				caseX+=55;
+				listeBloc.add(bp);
+				a.getChildren().add(bp);
+			}
+			caseY+=55;
+		}
+		
+		for (int i = 0; i < 10; i++) {
+			btn = new Button("bjr");
+			listeBloc.get(i).setCenter(btn);
+		}
 	}
 	
 	
