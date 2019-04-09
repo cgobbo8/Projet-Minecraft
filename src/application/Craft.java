@@ -16,11 +16,12 @@ public class Craft extends Pane{
 	private boolean estTrouve = false;
 	
 	
-	public Craft(String n, String ip, Craft[][] c, Type t, Inventaire inv) {
+	public Craft(String n, String ip, Craft[][] c, Type t, Inventaire inv,boolean et) {
 		this.nom = n;
 		this.type = t;
 		this.img = new Image(ip);
 		this.matriceCraft = c;
+		this.estTrouve = et;
 		
 		for(int i = 0 ; i < this.matriceCraft.length ; i++) {
 			for(int j = 0 ; j < this.matriceCraft.length ; i++) {

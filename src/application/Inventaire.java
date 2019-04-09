@@ -14,8 +14,8 @@ public class Inventaire {
 	private ArrayList<Craft> deco;
 	private ArrayList<Craft> base;
 	
-	public Inventaire(ArrayList<Craft> liste) {
-		this.inventaire = liste;
+	public Inventaire() {
+		this.inventaire = new ArrayList<>();
 		this.bloc = new ArrayList<>();
 		this.combat = new ArrayList<>();
 		this.outil = new ArrayList<>();
