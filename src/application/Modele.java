@@ -10,6 +10,7 @@ public class Modele extends Observable {
 	
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm()));
 	Craft[][] tableCraft = new Craft[3][3];
+	Inventaire inventairePrincipal = new Inventaire();
 
 	public Modele() {
 		
@@ -31,6 +32,30 @@ public class Modele extends Observable {
 		}
 		if(i < 3 && j < 3){
 			this.tableCraft[i][j] = c;
+		}
+	}
+
+	public List<Object> estDansTable(Craft c){
+		List<Object> objet = new List<Object>();
+		for( int i = 0 ; i < this.tableCraft.length ; i++){
+			for(int j = 0 ; j < this.tableCraft.length ; j++){
+				if(this.tableCraft[i][j].getName() == c.getName()){
+					objet.add(true);
+					objet.add(i);
+					objet.add(j);
+					return objet;
+				}
+			}
+		}
+		return null;
+	}
+
+	public void suppressionTable(Craft c){
+		if(estDansTable() != null){
+			List<Objet> objet = estDansTable(c);
+			if(objet.get(0)){
+				this.tableCraft[objet.get(1)][objet.get(2)] = null;
+			}
 		}
 	}
 
