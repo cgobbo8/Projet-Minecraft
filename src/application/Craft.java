@@ -1,10 +1,12 @@
 package application;
 
 import java.util.ArrayList;
-import javafx.scene.image.*;
-import javafx.scene.layout.*;
 
-public class Craft extends Pane{
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+public class Craft extends ImageView{
 	
 	private String nom;
 	private ArrayList<Craft> parents;
@@ -17,6 +19,13 @@ public class Craft extends Pane{
 	
 	
 	public Craft(String n, String ip, Craft[][] c, Type t, Inventaire inv,boolean et) {
+		this.img = new Image(getClass().getResourceAsStream(ip));
+		this.setImage(img);
+		this.setScaleX(2);
+		this.setScaleY(2);
+		Tooltip tooltip = new Tooltip(n);
+		Tooltip.install(this, tooltip);
+		
 		this.nom = n;
 		this.type = t;
 		this.img = new Image(ip);

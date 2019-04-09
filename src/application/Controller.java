@@ -4,9 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import javax.xml.stream.EventFilter;
-import javax.xml.stream.events.XMLEvent;
-
+import application.Craft.Type;
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
@@ -87,6 +85,9 @@ public class Controller implements Initializable {
 	
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm())); 
 	
+	private Craft[][] test = new Craft[3][3];
+	Craft c1 = new Craft("bed", "bed.png", test, Type.BASE, new Inventaire(), true);
+	
 	
 	public Controller(Modele m) {
 		this.modl = m;
@@ -136,7 +137,7 @@ public class Controller implements Initializable {
 		
 		for (int i = 0; i < 10; i++) {
 			btn = new Button("bjr");
-			listeBloc.get(i).setCenter(btn);
+			listeBloc.get(i).setCenter(c1);
 		}
 	}
 	
@@ -211,7 +212,7 @@ public class Controller implements Initializable {
 		opacity.setToValue(0.5);
 		opacity.play();
 
-		music.play();
+//		music.play();
 		btsettings.onFinishedProperty().set(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
