@@ -38,12 +38,11 @@ public class Modele extends Observable {
 		}
 	}
 
-	public List estDansTable(Craft c){
-		List objet = new List();
+	public ArrayList estDansTable(Craft c){
+		ArrayList<Integer> objet = new ArrayList();
 		for( int i = 0 ; i < this.tableCraft.length ; i++){
 			for(int j = 0 ; j < this.tableCraft.length ; j++){
 				if(this.tableCraft[i][j].getName() == c.getName()){
-					objet.add(true);
 					objet.add(i);
 					objet.add(j);
 					return objet;
@@ -55,10 +54,8 @@ public class Modele extends Observable {
 
 	public void suppressionTable(Craft c){
 		if(estDansTable(c) != null){
-			List objet = estDansTable(c);
-			if(objet.get(0)){
-				this.tableCraft[objet.get(1)][objet.get(2)] = null;
-			}
+			ArrayList objet = estDansTable(c);
+			this.tableCraft[(int) objet.get(0)][(int) objet.get(1)] = null;
 		}
 	}
 
