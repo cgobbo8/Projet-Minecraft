@@ -4,9 +4,10 @@ import java.awt.List;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import application.Craft.Type;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import shifumi.String;
+
 
 public class Modele extends Observable {
 	
@@ -77,25 +78,23 @@ public class Modele extends Observable {
 		
 		Modele mo = new Modele();
 		//craft de base
-		Craft blanc = new Craft("blanc", "\Projet-Minecraft\crafts\apple", [[blanc,blanc,blanc],[blanc,blanc,blanc],[blanc,blanc,blanc]] , BASE, this.inventairePrincipal,true);
-		Craft apple = new Craft("apple", "\Projet-Minecraft\crafts\apple", [[blanc,blanc,blanc],[blanc,apple,blanc],[blanc,blanc,blanc]], NOURRITURE, this.inventairePrincipal,true);
-		Craft diamond = new Craft("diam's", "\Projet-Minecraft\crafts\diamond", [[blanc,blanc,blanc],[blanc,diamondc,blanc],[blanc,blanc,blanc]] , base, this.inventairePrincipal,true);
-		Craft gold = new Craft("gold", "\Projet-Minecraft\crafts\gold_ingot", [[blanc,blanc,blanc],[blanc,gold,blanc],[blanc,blanc,blanc]] , BASE, this.inventairePrincipal,true);
-		Craft iron = new Craft("iron", "\Projet-Minecraft\crafts\iron_ingot", [[blanc,blanc,blanc],[blanc,iron,blanc],[blanc,blanc,blanc]] , BASE, this.inventairePrincipal,true);
-		Craft cobble = new Craft("cobble", "\Projet-Minecraft\crafts\cobblestone", [[blanc,blanc,blanc],[blanc,cobble,blanc],[blanc,blanc,blanc]] , BLOC, this.inventairePrincipal,true);
-		Craft redstone = new Craft("redstone", "\Projet-Minecraft\crafts\redstone_dust", [[blanc,blanc,blanc],[blanc,redstone,blanc],[blanc,blanc,blanc]] , BASE, this.inventairePrincipal,true);
-		Craft gunpowder = new Craft("gunpowder", "\Projet-Minecraft\crafts\apple", [[blanc,blanc,blanc],[blanc,blanc,blanc],[blanc,blanc,blanc]] , BASE, this.inventairePrincipal,true);
-		Craft coal = new Craft("coal", "\Projet-Minecraft\crafts\coal", [[blanc,blanc,blanc],[blanc,coal,blanc],[blanc,blanc,blanc]] , BASE, this.inventairePrincipal,true);
-		Craft wood = new Craft("wood", "\Projet-Minecraft\crafts\log_oak", [[blanc,blanc,blanc],[blanc,wood,blanc],[blanc,blanc,blanc]] , BLOC, this.inventairePrincipal,true);
-		Craft string = new Craft("string", "\Projet-Minecraft\crafts\string", [[blanc,blanc,blanc],[blanc,string,blanc],[blanc,blanc,blanc]] , BASE, this.inventairePrincipal,true);
-		Craft stick = new Craft("stick", "\Projet-Minecraft\crafts\stick", [[blanc,blanc,blanc],[blanc,stick,blanc],[blanc,blanc,blanc]] , BASE, this.inventairePrincipal,true);
+		Craft blanc = new Craft("blanc", "/Projet-Minecraft/crafts/apple", new Craft [][] {{null,null,null},{null,null,null},{null,null,null}} , Type.BASE, mo.inventairePrincipal,true) ;
+		Craft apple = new Craft("apple", "/Projet-Minecraft/crafts/apple", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.NOURRITURE, mo.inventairePrincipal,true) ;
+		Craft diamond = new Craft("diamond", "/Projet-Minecraft/crafts/diamond", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
+		Craft gold = new Craft("gold", "/Projet-Minecraft/crafts/gold_ingot", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
+		Craft iron = new Craft("iron", "/Projet-Minecraft/crafts/iron_ingot", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
+		Craft cobble = new Craft("cobblestone", "/Projet-Minecraft/crafts/cobblestone", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BLOC, mo.inventairePrincipal,true) ;
+		Craft redstone = new Craft("restone", "/Projet-Minecraft/crafts/redstone_dust", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
+		Craft gunpowder = new Craft("gunpowder", "/Projet-Minecraft/crafts/gunpowder", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
+		Craft stick = new Craft("stick", "/Projet-Minecraft/crafts/stick", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
 		
 		
-		Craft planche = new Craft("planche", "\Projet-Minecraft\crafts\planks_oak", [[blanc,blanc,blanc],[blanc,wood,blanc],[blanc,blanc,blanc]] , BLOC, this.inventairePrincipal,false);
-		Craft craftingTable = new Craft("crafting table", "\Projet-Minecraft\crafts\crafting_table_front", [[planche,planche,blanc],[planche,planche,blanc],[blanc,blanc,blanc]] , BLOC, this.inventairePrincipal,false);
-		Craft four = new Craft("four", "\Projet-Minecraft\crafts\furnace_front_on", [[cobble,cobble,cobble],[cobble,blanc,cobble],[cobble,cobble,cobble]] , BLOC, this.inventairePrincipal,false);
-		Craft diamondSword = new Craft("diamond Sword", "\Projet-Minecraft\crafts\diamond_sword", [[blanc,diamond,blanc],[blanc,diamond,blanc],[blanc,stick,blanc]] , COMBAT, this.inventairePrincipal,false);
-		Craft diamondPickaxe = new Craft("diamond Pickaxe", "\Projet-Minecraft\crafts\diamond_pickaxe", [[diamond,diamond,diamond],[blanc,stick,blanc],[blanc,stick,blanc]] , OUTIL, this.inventairePrincipal,false);
+		Craft planche = new Craft("planche", "/Projet-Minecraft/crafts/planks_oak", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BLOC, mo.inventairePrincipal,false) ;
+		Craft craftingTable = new Craft("crafting Table", "/Projet-Minecraft/crafts/crafting_table_front", new Craft [][] {{planche,planche,blanc},{planche,planche,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,false) ;
+		Craft four = new Craft("four", "/Projet-Minecraft/crafts/furnace_front_on", new Craft [][] {{cobble,cobble,cobble},{cobble,blanc,cobble},{cobble,cobble,cobble}} , Type.BASE, mo.inventairePrincipal,false) ;
+		Craft diamondSword = new Craft("diamond Sword", "/Projet-Minecraft/crafts/diamond_sword", new Craft [][] {{blanc,diamond,blanc},{blanc,diamond,blanc},{blanc,stick,blanc}} , Type.COMBAT, mo.inventairePrincipal,false) ;
+		Craft diamondPickaxe = new Craft("diamond Pickaxe", "/Projet-Minecraft/crafts/diamond_pickaxe", new Craft [][] {{diamond,diamond,diamond},{blanc,stick,blanc},{blanc,stick,blanc}} , Type.OUTIL, mo.inventairePrincipal,false) ;
+		
 		
 	}
 	
