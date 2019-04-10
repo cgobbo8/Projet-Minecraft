@@ -33,45 +33,23 @@ public class Controller implements Initializable {
 	Modele modl;
 	
 	@FXML
-	private Button btnplay = new Button();
-	@FXML
-	private Button settings = new Button();
-	@FXML
-	private Button exit = new Button();
-	@FXML
-	private Button settingCancel = new Button();
+	private Button btnplay,settings,exit,settingCancel = new Button();
 	@FXML
 	private ImageView titre;
 	@FXML
-	private AnchorPane inventaire = new AnchorPane();
-	@FXML
-	private AnchorPane background = new AnchorPane();
-	@FXML
-	private AnchorPane bgopacity = new AnchorPane();
-	@FXML
-	private AnchorPane panelSetting = new AnchorPane();
-	@FXML
-	private AnchorPane menuprinc = new AnchorPane();
+	private AnchorPane inventaire,background,bgopacity,panelSetting,menuprinc = new AnchorPane();
 	@FXML
 	private TabPane elementBasis = new TabPane();
 	@FXML
-	private Tab tab1 = new Tab();
+	private Tab tab1,tab2,tab3,tab4,tab5 = new Tab();
 	@FXML
-	private Tab tab2 = new Tab();
+	private AnchorPane pane1,pane2,pane3,pane4;
 	@FXML
-	private Tab tab3 = new Tab();
-	@FXML
-	private Tab tab4 = new Tab();
-	@FXML
-	private Tab tab5 = new Tab();
-	@FXML
-	private AnchorPane pane1;
-	@FXML
-	private AnchorPane pane2;
-	@FXML
-	private AnchorPane pane3;
-	@FXML
-	private AnchorPane pane4;
+	private BorderPane c1,c2,c3,c4,c5,c6,c7,c8,c9;
+	
+	ArrayList<BorderPane> l = new ArrayList<BorderPane>();
+	BorderPane[][] matriceC = {{c1,c2,c3},{c4,c5,c6},{c7,c8,c9}};
+	
 	Button btn;
 	
 	ArrayList<BorderPane> listeBloc = new ArrayList<BorderPane>();
@@ -86,7 +64,7 @@ public class Controller implements Initializable {
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm())); 
 	
 	private Craft[][] test = new Craft[3][3];
-	Craft c1 = new Craft("bed", "bed.png", test, Type.BASE, new Inventaire(), true);
+	Craft craftTest = new Craft("bed", "bed.png",test,Type.BASE,new Inventaire(),true);
 	
 	
 	public Controller(Modele m) {
@@ -106,6 +84,19 @@ public class Controller implements Initializable {
 		initialisationPane(pane3);
 		initialisationPane(pane4);
 		
+		l.add(c1);
+		l.add(c2);
+		l.add(c3);
+		l.add(c4);
+		l.add(c5);
+		l.add(c6);
+		l.add(c7);
+		l.add(c8);
+		l.add(c9);
+		
+		l.get(2).setCenter(craftTest);
+
+
 //		PEUT ETRE SERVIALBLE POUR LA SUITE 
 		/**
 		tab1.setOnSelectionChanged(new EventHandler<Event>() {
@@ -137,7 +128,7 @@ public class Controller implements Initializable {
 		
 		for (int i = 0; i < 10; i++) {
 			btn = new Button("bjr");
-			listeBloc.get(i).setCenter(c1);
+			listeBloc.get(i).setCenter(craftTest);
 		}
 	}
 	
