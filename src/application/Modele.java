@@ -39,8 +39,8 @@ public class Modele extends Observable {
 		}
 	}
 
-	public ArrayList estDansTable(Craft c){
-		ArrayList<Integer> objet = new ArrayList();
+	public ArrayList<Integer> estDansTable(Craft c){
+		ArrayList<Integer> objet = new ArrayList<Integer>();
 		for( int i = 0 ; i < this.tableCraft.length ; i++){
 			for(int j = 0 ; j < this.tableCraft.length ; j++){
 				if(this.tableCraft[i][j].getName() == c.getName()){
@@ -55,21 +55,14 @@ public class Modele extends Observable {
 
 	public void suppressionTable(Craft c){
 		if(estDansTable(c) != null){
-			ArrayList objet = estDansTable(c);
+			ArrayList<Integer> objet = estDansTable(c);
 			this.tableCraft[(int) objet.get(0)][(int) objet.get(1)] = null;
 		}
 	}
 
 	public Craft testCraft(){
-		for(int i = 0; i < 3; i++){
-			for(int j = 0; j < 3; j++){
-				for(int k = 0; k < this.tableCraft[i][j].getEnfants().size(); k++){
-					if(this.tableCraft.equals(this.tableCraft[i][j].getEnfants().get(k).getMatrice())){
-						this.tableCraft[i][j].getEnfants().get(k).setEstTrouve(true);
-						return this.tableCraft[i][j].getEnfants().get(k);
-					}
-				}
-			}
+		if(this.tableCraft[0][0].getEnfants().containsKey(this.tableCraft)) {
+			return this.tableCraft[0][0].getEnfants().get(this.tableCraft);
 		}
 		return null;
 	}
