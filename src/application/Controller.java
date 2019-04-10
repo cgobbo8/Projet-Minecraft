@@ -56,6 +56,7 @@ public class Controller implements Initializable {
 	BorderPane bp;
 	int caseX = 25;
 	int caseY = 80;
+	int indextable = 0;
 
     
     double orgSceneX, orgSceneY;
@@ -147,8 +148,21 @@ public class Controller implements Initializable {
         	 
         	 if(e.getSource().getClass()==Craft.class ) {
         		this.modl.ajoutCraftDansTable((Craft) e.getSource());
+        		l.get(indextable).setCenter((Craft) e.getSource());
+        		indextable++;
+        		if (indextable==9) {
+        			indextable = 0;
+        			
+        		}
         		if (this.modl.tableCraft[2][2] != null) {
-        			this.modl.testCraft();
+        			Craft resultat=this.modl.testCraft();
+        			if (resultat==null) {
+        				this.modl.tableCraft= new Craft [][] {{null,null,null},{null,null,null},{null,null,null}};
+        				System.out.println("craft introuvable");
+        			}
+        			else {
+        				System.out.println("rajouter truc");
+        			}
         		}
         	 }
         	 
