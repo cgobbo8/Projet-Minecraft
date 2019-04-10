@@ -20,7 +20,7 @@ public class Craft extends ImageView{
 	
 	public Craft(String n, String ip, Craft[][] c, Type t, Inventaire inv,boolean et) {
 		this.img = new Image(getClass().getResourceAsStream(ip));
-		this.setImage(img);
+		this.setImage(this.img);
 		this.setScaleX(2);
 		this.setScaleY(2);
 		Tooltip tooltip = new Tooltip(n);
@@ -28,7 +28,6 @@ public class Craft extends ImageView{
 		
 		this.nom = n;
 		this.type = t;
-		this.img = new Image(ip);
 		this.matriceCraft = c;
 		this.estTrouve = et;
 		
@@ -42,11 +41,7 @@ public class Craft extends ImageView{
 		inv.addCraft(this);
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-	}
-	
 	public String getName() {
 		return this.nom;
 	}
