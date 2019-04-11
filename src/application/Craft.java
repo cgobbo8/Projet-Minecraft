@@ -2,6 +2,8 @@ package application;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -40,6 +42,14 @@ public class Craft extends ImageView{
 			}
 		}
 		inv.addCraft(this);
+		//creation hashmap enfants
+		Set cles = parents.keySet();
+		Iterator iter = cles.iterator();
+		while (iter.hasNext()) {
+			parents.get(iter.next()).enfants.put(this.matriceCraft,this);
+		}
+		
+		System.out.println(cles);
 	}
 	
 
