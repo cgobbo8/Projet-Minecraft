@@ -25,6 +25,8 @@ public class Craft extends ImageView{
 		this.setScaleY(2);
 		Tooltip tooltip = new Tooltip(n);
 		Tooltip.install(this, tooltip);
+		this.setId("cur");
+		
 		
 		this.nom = n;
 		this.type = t;

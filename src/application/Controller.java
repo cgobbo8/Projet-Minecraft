@@ -48,7 +48,6 @@ public class Controller implements Initializable {
 	private BorderPane c1,c2,c3,c4,c5,c6,c7,c8,c9;
 	
 	ArrayList<BorderPane> l = new ArrayList<BorderPane>();
-	BorderPane[][] matriceC = {{c1,c2,c3},{c4,c5,c6},{c7,c8,c9}};
 	
 	Button btn;
 	
@@ -94,8 +93,6 @@ public class Controller implements Initializable {
 		l.add(c8);
 		l.add(c9);
 		
-		l.get(2).setCenter(craftTest);
-
 
 //		PEUT ETRE SERVIALBLE POUR LA SUITE 
 		/**
@@ -119,6 +116,7 @@ public class Controller implements Initializable {
 				bp.setPrefSize(50, 50);
 				bp.setLayoutX(caseX);
 				bp.setLayoutY(caseY);
+				bp.setOnMouseClicked(detectCraft);
 				caseX+=55;
 				listeBloc.add(bp);
 				a.getChildren().add(bp);
@@ -142,16 +140,26 @@ public class Controller implements Initializable {
             }
         };
     
+        EventHandler<MouseEvent> detectCraft = new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				click(e);
+				
+			}
+		};
     		
          public void click(MouseEvent e) {
         	 
-        	 if(e.getSource().getClass()==Craft.class ) {
+        	 if(e.getTarget().getClass()==Craft.class ) {
         		this.modl.ajoutCraftDansTable((Craft) e.getSource());
         		if (this.modl.tableCraft[2][2] != null) {
         			this.modl.testCraft();
         		}
         	 }
         	 
+        	 System.out.println(e.getTarget().getClass() == Craft.class);
+
          }
          
          

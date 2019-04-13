@@ -37,6 +37,9 @@ public class VuePrincipale extends Application {
             	clic = new MediaPlayer(new Media(getClass().getResource("ressources/clic.mp3").toExternalForm()));
             	clic.setVolume(0.5) ;
             	clic.play();
+
+            	
+            	
             });
 
             
