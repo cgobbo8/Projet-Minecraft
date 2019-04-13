@@ -1,6 +1,9 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -9,8 +12,8 @@ import javafx.scene.image.ImageView;
 public class Craft extends ImageView{
 	
 	private String nom;
-	private ArrayList<Craft> parents;
-	private ArrayList<Craft> enfants;
+	private HashMap<Craft[][],Craft> parents;
+	private HashMap<Craft[][],Craft> enfants;
 	private Craft[][] matriceCraft = new Craft[3][3];
 	private Image img;
 	enum Type {BLOC,COMBAT,OUTIL,NOURRITURE,REDSTONE,DECO,BASE};
@@ -35,12 +38,20 @@ public class Craft extends ImageView{
 		
 		for(int i = 0 ; i < this.matriceCraft.length ; i++) {
 			for(int j = 0 ; j < this.matriceCraft.length ; i++) {
-				if(this.matriceCraft[i][j] != null && !this.parents.contains(this.matriceCraft[i][j])) {
-					this.parents.add(this.matriceCraft[i][j]);
+				if(this.matriceCraft[i][j] != null && !this.parents.containsKey(this.matriceCraft[i][j].getMatrice())) {
+					this.parents.put(this.matriceCraft[i][j].getMatrice(),this.matriceCraft[i][j]);
 				}
 			}
 		}
 		inv.addCraft(this);
+		//creation hashmap enfants
+		Set cles = parents.keySet();
+		Iterator iter = cles.iterator();
+		while (iter.hasNext()) {
+			parents.get(iter.next()).enfants.put(this.matriceCraft,this);
+		}
+		
+		System.out.println(cles);
 	}
 	
 
@@ -52,20 +63,20 @@ public class Craft extends ImageView{
 		this.nom = s;
 	}
 	
-	public ArrayList<Craft> getParents() {
+	public HashMap<Craft[][], Craft> getParents() {
 		return this.parents;
 	}
 	
 	public void addParents(Craft c) {
-		this.parents.add(c);
+		this.parents.put(c.getMatrice(),c);
 	}
 	
-	public ArrayList<Craft> getEnfants(){
+	public HashMap<Craft[][],Craft> getEnfants(){
 		return this.enfants;
 	}
 	
 	public void addEnfants(Craft c) {
-		this.enfants.add(c);
+		this.enfants.put(c.getMatrice(),c);
 	}
 	
 	public Craft[][] getMatrice(){
