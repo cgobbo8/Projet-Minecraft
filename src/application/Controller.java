@@ -12,19 +12,26 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
@@ -33,11 +40,11 @@ public class Controller implements Initializable {
 	Modele modl;
 	
 	@FXML
-	private Button btnplay,settings,exit,settingCancel = new Button();
+	private Button btnplay,settings,exit,settingCancel,btnBlanc = new Button();
 	@FXML
 	private ImageView titre;
 	@FXML
-	private AnchorPane inventaire,background,bgopacity,panelSetting,menuprinc = new AnchorPane();
+	private AnchorPane inventaire,background,bgopacity,panelSetting,menuprinc,matrice = new AnchorPane();
 	@FXML
 	private TabPane elementBasis = new TabPane();
 	@FXML
@@ -46,10 +53,17 @@ public class Controller implements Initializable {
 	private AnchorPane pane1,pane2,pane3,pane4;
 	@FXML
 	private BorderPane c1,c2,c3,c4,c5,c6,c7,c8,c9;
+	@FXML
+	private Rectangle flecheBas;
+	@FXML
+	private Polygon flecheHaut;
+	@FXML
+	private Button test2;
 	
 	ArrayList<BorderPane> l = new ArrayList<BorderPane>();
 	
 	Button btn;
+	
 	
 	ArrayList<BorderPane> listeBloc = new ArrayList<BorderPane>();
 	BorderPane bp;
@@ -64,7 +78,8 @@ public class Controller implements Initializable {
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm())); 
 	
 	private Craft[][] test = new Craft[3][3];
-	Craft craftTest = new Craft("bed", "bed.png",test,Type.BASE,new Inventaire(),true);
+	Craft craftTest = new Craft("bed", "ressources/crafts/bed.png",test,Type.BASE,new Inventaire(),true);
+	Craft blanc = new Craft("blanc", "blanc.png", test ,Type.BASE, new Inventaire(),true) ;
 	
 	
 	public Controller(Modele m) {
@@ -94,6 +109,13 @@ public class Controller implements Initializable {
 		l.add(c8);
 		l.add(c9);
 		
+		for (int i = 0; i < l.size(); i++) {
+			l.get(i).getBottom().setOpacity(0);
+		}
+		l.get(0).getBottom().setOpacity(1);
+
+		
+
 
 //		PEUT ETRE SERVIALBLE POUR LA SUITE 
 		/**
@@ -127,8 +149,9 @@ public class Controller implements Initializable {
 		
 		for (int i = 0; i < 10; i++) {
 			btn = new Button("bjr");
-			listeBloc.get(i).setCenter(craftTest);
+			listeBloc.get(i).setCenter(craftTest.clone());
 		}
+		
 	}
 	
 	
@@ -150,31 +173,103 @@ public class Controller implements Initializable {
 			}
 		};
     		
+		public void cl(Event e) {
+			 Craft copyCraft = new Craft("bed", "blanc.png",test,Type.BASE,new Inventaire(),true);
+    		 l.get(indextable).setCenter(copyCraft.clone());
+       		 indextable++;
+       		 if (indextable == 9) {
+       			 indextable = 0;
+       		 }
+       		 
+       		curseur();
+    		
+		}
+
+		
+		
          public void click(MouseEvent e) {
         	 
-        	 if(e.getTarget().getClass()==Craft.class ) {
-        		this.modl.ajoutCraftDansTable((Craft) e.getSource());
-        		l.get(indextable).setCenter((Craft) e.getSource());
-        		indextable++;
-        		if (indextable==9) {
-        			indextable = 0;
-        			
-        		}
-        		if (this.modl.tableCraft[2][2] != null) {
-        			Craft resultat=this.modl.testCraft();
-        			if (resultat==null) {
-        				this.modl.tableCraft= new Craft [][] {{null,null,null},{null,null,null},{null,null,null}};
-        				System.out.println("craft introuvable");
-        			}
-        			else {
-        				System.out.println("rajouter truc");
-        			}
-        		}
-        	 }
+//        	 if(e.getTarget().getClass()==Craft.class ) {
+//        		this.modl.ajoutCraftDansTable((Craft) e.getSource());
+//        		l.get(indextable).setCenter((Craft) e.getSource());
+//        		indextable++;
+//        		if (indextable==9) {
+//        			indextable = 0;
+//        			
+//        		}
+//        		if (this.modl.tableCraft[2][2] != null) {
+//        			Craft resultat=this.modl.testCraft();
+//        			if (resultat==null) {
+//        				this.modl.tableCraft= new Craft [][] {{null,null,null},{null,null,null},{null,null,null}};
+//        				System.out.println("craft introuvable");
+//        			}
+//        			else {
+//        				System.out.println("rajouter truc");
+//        			}
+//        		}
+//        	 }
+        	 
+        	 if(e.getTarget().getClass() == Craft.class){
+        		 Craft copyCraft = (Craft) e.getTarget();
+        		 l.get(indextable).setCenter(copyCraft.clone());
+        		 indextable++;
+        		 if (indextable == 9) {
+        			 indextable = 0;
+        		 }
+        		 
+        		 curseur();
         	 
         	 System.out.println(e.getTarget().getClass() == Craft.class);
 
          }
+        	 }
+         
+         public void crafting() {
+        	 System.out.println("ajout craft");
+        	 indextable = 0;
+        	 curseur();
+        	 for (int i = 0; i < l.size(); i++) {
+				l.get(i).setCenter(null);
+			}
+         }
+         
+         public void curseur() {
+    		 for (int i = 0; i < l.size(); i++) {
+      			l.get(i).getBottom().setOpacity(0);
+      		}
+       		switch (indextable) {
+  			case 0:
+  				l.get(0).getBottom().setOpacity(1);
+  				break;
+  			case 1:
+  				l.get(1).getBottom().setOpacity(1);
+  				break;
+  			case 2:
+  				l.get(2).getBottom().setOpacity(1);
+  				break;
+  			case 3:
+  				l.get(3).getBottom().setOpacity(1);
+  				break;
+  			case 4:
+  				l.get(4).getBottom().setOpacity(1);
+  				break;
+  			case 5:
+  				l.get(5).getBottom().setOpacity(1);
+  				break;
+  			case 6:
+  				l.get(6).getBottom().setOpacity(1);
+  				break;
+  			case 7:
+  				l.get(7).getBottom().setOpacity(1);
+  				break;
+  			case 8:
+  				l.get(8).getBottom().setOpacity(1);
+  				break;
+  			default:
+  				break;
+  			}
+
+		}
          
          
         EventHandler<MouseEvent> circleOnMouseDraggedEventHandler = 

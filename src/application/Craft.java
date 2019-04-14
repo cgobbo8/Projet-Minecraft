@@ -1,6 +1,5 @@
 package application;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -9,9 +8,10 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Craft extends ImageView{
+public class Craft extends ImageView implements Cloneable{
 	
 	private String nom;
+	public String ip;
 	private HashMap<Craft[][],Craft> parents;
 	private HashMap<Craft[][],Craft> enfants;
 	private Craft[][] matriceCraft = new Craft[3][3];
@@ -19,9 +19,11 @@ public class Craft extends ImageView{
 	enum Type {BLOC,COMBAT,OUTIL,NOURRITURE,REDSTONE,DECO,BASE};
 	private Type type;
 	private boolean estTrouve = false;
+	private Inventaire inv;
 	
 	
 	public Craft(String n, String ip, Craft[][] c, Type t, Inventaire inv,boolean et) {
+		this.ip = ip;
 		this.img = new Image(getClass().getResourceAsStream(ip));
 		this.setImage(this.img);
 		this.setScaleX(2);
@@ -31,6 +33,8 @@ public class Craft extends ImageView{
 		this.setId("cur");
 		
 		
+		
+		this.inv = inv;
 		this.nom = n;
 		this.type = t;
 		this.matriceCraft = c;
@@ -52,6 +56,10 @@ public class Craft extends ImageView{
 		}
 		
 		System.out.println(cles);
+	}
+	
+	public Craft clone() {
+		return new Craft(this.nom, this.ip, this.matriceCraft, this.type, this.inv, this.estTrouve);
 	}
 	
 

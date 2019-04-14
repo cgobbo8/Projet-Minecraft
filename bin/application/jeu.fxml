@@ -95,7 +95,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="inventaire" layoutX="140.0" layoutY="87.0" onMouseClicked="#click" opacity="0.0" prefHeight="446.0" prefWidth="933.0" visible="false">
+      <AnchorPane fx:id="inventaire" layoutX="140.0" layoutY="87.0" onMouseClicked="#click" prefHeight="446.0" prefWidth="933.0">
          <children>
             <TabPane layoutX="-79.0" layoutY="-9.0" prefHeight="383.0" prefWidth="614.0" snapToPixel="false" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="100.0" tabMinHeight="70.0" tabMinWidth="20.0">
               <tabs>
@@ -178,7 +178,7 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
                                  <content>
-                                    <AnchorPane fx:id="pane3" layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" stylesheets="@application.css" translateX="15.0">
+                                    <AnchorPane fx:id="pane3" layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="531.0" stylesheets="@application.css" translateX="15.0">
                                        <children>
                                           <Label layoutX="208.0" layoutY="14.0" text="Nourriture">
                                              <font>
@@ -395,17 +395,128 @@
             </TabPane>
             <AnchorPane fx:id="matrice" layoutX="581.0" layoutY="-9.0" prefHeight="383.0" prefWidth="258.0" styleClass="fondInventaire" stylesheets="@application.css">
                <children>
-                  <BorderPane id="caseCraft" fx:id="c1" layoutX="31.0" layoutY="176.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <BorderPane id="caseCraft" fx:id="c2" layoutX="99.0" layoutY="176.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <BorderPane id="caseCraft" fx:id="c3" layoutX="167.0" layoutY="176.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <BorderPane id="caseCraft" fx:id="c5" layoutX="98.0" layoutY="234.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <BorderPane id="caseCraft" fx:id="c6" layoutX="166.0" layoutY="234.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <BorderPane id="caseCraft" fx:id="c4" layoutX="30.0" layoutY="234.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <BorderPane id="caseCraft" fx:id="c7" layoutX="30.0" layoutY="293.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <BorderPane id="caseCraft" fx:id="c8" layoutX="98.0" layoutY="293.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <BorderPane id="caseCraft" fx:id="c9" layoutX="166.0" layoutY="293.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <BorderPane id="caseCraft" layoutX="99.0" layoutY="35.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
-                  <Polygon fill="#959595" layoutX="131.0" layoutY="120.0" scaleX="0.4" scaleY="0.3" stroke="TRANSPARENT" strokeLineJoin="BEVEL" strokeType="INSIDE">
+                  <BorderPane id="caseCraft" fx:id="c1" layoutX="31.0" layoutY="176.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                     <bottom>
+                        <Ellipse fill="#ba2222c2" radiusX="4.0" radiusY="3.0" strokeType="INSIDE" strokeWidth="0.5" BorderPane.alignment="CENTER">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#d31717" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                        </Ellipse>
+                     </bottom></BorderPane>
+                  <BorderPane id="caseCraft" fx:id="c2" layoutX="99.0" layoutY="176.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                     <bottom>
+                        <Ellipse fill="#ba2222c2" radiusX="4.0" radiusY="3.0" strokeType="INSIDE" strokeWidth="0.5" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets top="-10.0" />
+                           </BorderPane.margin>
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#d31717" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                        </Ellipse>
+                     </bottom></BorderPane>
+                  <BorderPane id="caseCraft" fx:id="c3" layoutX="167.0" layoutY="176.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                     <bottom>
+                        <Ellipse fill="#ba2222c2" radiusX="4.0" radiusY="3.0" strokeType="INSIDE" strokeWidth="0.5" BorderPane.alignment="CENTER">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#d31717" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                        </Ellipse>
+                     </bottom></BorderPane>
+                  <BorderPane id="caseCraft" fx:id="c5" layoutX="98.0" layoutY="234.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                     <bottom>
+                        <Ellipse fill="#ba2222c2" radiusX="4.0" radiusY="3.0" strokeType="INSIDE" strokeWidth="0.5" BorderPane.alignment="CENTER">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#d31717" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                        </Ellipse>
+                     </bottom></BorderPane>
+                  <BorderPane id="caseCraft" fx:id="c6" layoutX="166.0" layoutY="234.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                     <bottom>
+                        <Ellipse fill="#ba2222c2" radiusX="4.0" radiusY="3.0" strokeType="INSIDE" strokeWidth="0.5" BorderPane.alignment="CENTER">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#d31717" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                        </Ellipse>
+                     </bottom></BorderPane>
+                  <BorderPane id="caseCraft" fx:id="c4" layoutX="30.0" layoutY="234.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                     <bottom>
+                        <Ellipse fill="#ba2222c2" radiusX="4.0" radiusY="3.0" strokeType="INSIDE" strokeWidth="0.5" BorderPane.alignment="CENTER">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#d31717" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                        </Ellipse>
+                     </bottom></BorderPane>
+                  <BorderPane id="caseCraft" fx:id="c7" layoutX="30.0" layoutY="293.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                     <bottom>
+                        <Ellipse fill="#ba2222c2" radiusX="4.0" radiusY="3.0" strokeType="INSIDE" strokeWidth="0.5" BorderPane.alignment="CENTER">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#d31717" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                        </Ellipse>
+                     </bottom></BorderPane>
+                  <BorderPane id="caseCraft" fx:id="c8" layoutX="98.0" layoutY="293.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                     <bottom>
+                        <Ellipse fill="#ba2222c2" radiusX="4.0" radiusY="3.0" strokeType="INSIDE" strokeWidth="0.5" BorderPane.alignment="CENTER">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#d31717" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                        </Ellipse>
+                     </bottom></BorderPane>
+                  <BorderPane id="caseCraft" fx:id="c9" layoutX="166.0" layoutY="293.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css">
+                     <bottom>
+                        <Ellipse fill="#ba2222c2" radiusX="4.0" radiusY="3.0" strokeType="INSIDE" strokeWidth="0.5" BorderPane.alignment="CENTER">
+                           <stroke>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#d31717" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </stroke>
+                        </Ellipse>
+                     </bottom></BorderPane>
+                  <BorderPane id="caseCraft" layoutX="136.0" layoutY="35.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <Polygon id="cur" fx:id="flecheHaut" fill="#959595" layoutX="166.0" layoutY="120.0" onMouseClicked="#crafting" scaleX="0.4" scaleY="0.3" stroke="TRANSPARENT" strokeLineJoin="BEVEL" strokeType="INSIDE" styleClass="cur">
                     <points>
                       <Double fx:value="-50.0" />
                       <Double fx:value="40.0" />
@@ -415,7 +526,19 @@
                       <Double fx:value="-60.0" />
                     </points>
                   </Polygon>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#959595" height="30.0" layoutX="122.0" layoutY="124.0" stroke="TRANSPARENT" strokeType="INSIDE" width="19.0" />
+                  <Rectangle id="cur" fx:id="flecheBas" arcHeight="5.0" arcWidth="5.0" fill="#959595" height="30.0" layoutX="157.0" layoutY="125.0" onMouseClicked="#crafting" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="cur" width="19.0" />
+                  <Button id="record-sales" fx:id="btnBlanc" layoutX="31.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#cl" styleClass="cur" textFill="WHITE">
+                     <font>
+                        <Font name="Minecraft" size="21.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
+                           <image>
+                              <Image url="@ressources/arrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

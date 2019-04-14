@@ -18,6 +18,30 @@
 	-fx-effect: innershadow( gaussian, white, 20, 0, 5, 5 );
 }
 
+#record-sales {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #555 0%, #777 100%),
+        #555,
+        #777,
+        radial-gradient(center 50% 50%, radius 100%, #555, #777);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+}
+
+#record-sales:hover {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #222 0%, #444 100%),
+        #222,
+        #444,
+        radial-gradient(center 50% 50%, radius 100%, #222, #444);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+}
+
 .scroll-pane{
     -fx-background-color:transparent;
 }
@@ -119,6 +143,10 @@
 
 .cur{
 	-fx-cursor:hand;
+}
+
+.crafting:hover{
+	-fx-background-color:black;
 }
 
 #cur{
