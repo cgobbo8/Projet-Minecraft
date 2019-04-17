@@ -81,7 +81,7 @@ public class Modele extends Observable {
 		if(this.tableCraft[i][j].getEnfants().containsKey(this.tableCraft[i][j].getName())) {
 			return this.tableCraft[i][j].getEnfants().get(this.tableCraft[i][j].getName());
 		}
-		return null;
+		return new Craft("blanc", "blanc.png", new Craft[3][3], Type.BASE, this.inventairePrincipal, true );
 	}
 
 	public void setTableCraft(Craft[][] tableCraft) {
