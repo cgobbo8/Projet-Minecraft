@@ -1,6 +1,11 @@
 package application;
 
 import java.awt.List;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -9,20 +14,33 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 
-public class Modele extends Observable {
+public class Modele extends Observable implements Serializable{
 
 
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm()));
 	Craft[][] tableCraft = new Craft[3][3];
 	Inventaire inventairePrincipal;
+	File fichierCraft = new File("Projet-Minecraft/testest.csv");
 
 	public Modele(Inventaire i) {
 		this.inventairePrincipal = i;
+		try {
+			FileOutputStream fos = new FileOutputStream(fichierCraft);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			
+			
+		} catch (IOException e1) {
+			throw new RuntimeException("Impossible");
+		}
+		
+		
 	}
 
 	public Craft[][] getTableCraft() {
 		return tableCraft;
 	}
+	
+		
 
 	public String toString() {
 		String s = "";
