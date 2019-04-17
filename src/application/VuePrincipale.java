@@ -18,10 +18,10 @@ public class VuePrincipale extends Application {
     public void start(Stage primaryStage) throws Exception{
     	
     	try {
-    		Modele modl = new Modele();
+    		Modele modl = new Modele(new Inventaire());
     		
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("jeu.fxml"));
-    		Controller ctrl = new Controller(modl);
+    		Controller ctrl = new Controller();
     		loader.setController(ctrl);
             Parent root = (Parent) loader.load();
 

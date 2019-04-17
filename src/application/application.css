@@ -6,6 +6,21 @@
 	-fx-background-repeat: no-repeat ;
 }
 
+#fondbtn{
+		-fx-background-radius:20px;
+	-fx-border-radius:10px;
+	-fx-effect: dropshadow( gaussian , black , 4,0,0,1 );
+	-fx-cursor:hand;
+}
+
+.fondinv{
+		-fx-background-image: url("ressources/cobblepaper.png") ;
+	-fx-background-size: contain ;
+	-fx-background-repeat: no-repeat ;
+
+	-fx-effect: dropshadow( gaussian , black , 19,0,0,5 );
+}
+
 .BG2{
 
 	-fx-background-color:black;

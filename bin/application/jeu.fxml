@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#click" prefHeight="619.0" prefWidth="1099.0" styleClass="BG" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="bgopacity" opacity="0.0" prefHeight="619.0" prefWidth="1099.0" styleClass="BG2" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="bgopacity" opacity="0.0" prefHeight="619.0" prefWidth="1099.0" styleClass="BG2" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="menuprinc" prefHeight="619.0" prefWidth="1099.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="titre" fitHeight="128.0" fitWidth="614.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="437.16947174072266" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="259.0" AnchorPane.topAnchor="54.0">
@@ -95,7 +95,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="inventaire" layoutX="140.0" layoutY="87.0" onMouseClicked="#click" prefHeight="446.0" prefWidth="933.0">
+      <AnchorPane fx:id="inventaire" layoutX="140.0" layoutY="87.0" onMouseClicked="#click" prefHeight="446.0" prefWidth="933.0" visible="false">
          <children>
             <TabPane layoutX="-79.0" layoutY="-9.0" prefHeight="383.0" prefWidth="614.0" snapToPixel="false" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="100.0" tabMinHeight="70.0" tabMinWidth="20.0">
               <tabs>
@@ -542,6 +542,21 @@
                </children>
             </AnchorPane>
          </children>
+      </AnchorPane>
+      <AnchorPane opacity="0.0" prefHeight="619.0" prefWidth="1099.0" styleClass="BG2" visible="false" />
+      <AnchorPane layoutX="84.0" layoutY="14.0" prefHeight="516.0" prefWidth="917.0" styleClass="fondinv" visible="false" />
+      <AnchorPane fx:id="btnFleche" layoutX="481.0" layoutY="543.0" onMouseClicked="#ouvrirInv" opacity="0.8" prefHeight="64.0" prefWidth="123.0">
+         <children>
+            <ImageView fx:id="imgFleche" fitHeight="79.0" fitWidth="71.0" layoutX="26.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+               <image>
+                  <Image url="@ressources/next.png" />
+               </image>
+            </ImageView>
+         </children>
+         <styleClass>
+            <String fx:value="fondInventaire" />
+            <String fx:value="cur" />
+         </styleClass>
       </AnchorPane>
    </children>
 </AnchorPane>
