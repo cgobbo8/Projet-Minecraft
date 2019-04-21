@@ -1,8 +1,6 @@
 package application;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.ArrayList;
 
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -12,8 +10,8 @@ public class Craft extends ImageView implements Cloneable{
 
 	private String nom;
 	public String ip;
-	private HashMap<String,Craft> parents;
-	private HashMap<String,Craft> enfants;
+	private ArrayList<Craft> parents;
+	private ArrayList<Craft> enfants;
 	private Craft[][] matriceCraft = new Craft[3][3];
 	private Image img;
 	enum Type {BLOC,COMBAT,OUTIL,NOURRITURE,REDSTONE,DECO,BASE};
@@ -39,29 +37,31 @@ public class Craft extends ImageView implements Cloneable{
 		this.type = t;
 		this.matriceCraft = c;
 		this.estTrouve = et;
-		this.parents = new HashMap<String, Craft>();
-		this.enfants = new HashMap<String, Craft>();
+		this.parents = new ArrayList<Craft>();
+		this.enfants = new ArrayList<Craft>();
 
-		//creation hashmap parents
+		//creation listes parents/enfants
 		try {
 			for(int i = 0 ; i < this.matriceCraft.length ; i++) {
 				for(int j = 0 ; j < this.matriceCraft.length ; j++) {
-					if(!this.parents.containsKey(this.matriceCraft[i][j].getName())) {
-						this.parents.put(this.matriceCraft[i][j].getName(), this.matriceCraft[i][j]);
-						this.parents.get(this.matriceCraft[i][j].getName()).enfants.put(this.getName(), this);
+					if(!this.parents.contains(this.matriceCraft[i][j])) {
+						this.parents.add(this.matriceCraft[i][j]);
 					}
 				}
+			}
+			for (int i = 0 ; i < this.parents.size() ; i++){
+				this.parents.get(i).enfants.add(this);
 			}
 			this.inv.addCraft(this);
 	
 			
-			for(String key : this.parents.keySet()) {
+		/*	for(String key : this.parents.keySet()) {
 				Craft cparent = this.parents.get(key);
 				for(String keyEnf : cparent.enfants.keySet()) {
 					Craft cenf = cparent.enfants.get(keyEnf);
-					System.out.println("Enfants de  " + cparent.getName() + " : " + cenf.getName());					
-				}				
-			}
+					System.out.println("Enfants de  " + cparent.getName() + " : " + cenf.getName());
+				}
+			}*/
 			
 			
 			
@@ -90,20 +90,20 @@ public class Craft extends ImageView implements Cloneable{
 		this.nom = s;
 	}
 
-	public HashMap<String, Craft> getParents() {
+	public ArrayList<Craft> getParents() {
 		return this.parents;
 	}
 
 	public void addParents(Craft c) {
-		this.parents.put(c.getName(),c);
+		this.parents.add(c);
 	}
 
-	public HashMap<String,Craft> getEnfants(){
+	public ArrayList<Craft> getEnfants(){
 		return this.enfants;
 	}
 
 	public void addEnfants(Craft c) {
-		this.enfants.put(c.getName(),c);
+		this.enfants.add(c);
 	}
 
 	public Craft[][] getMatrice(){

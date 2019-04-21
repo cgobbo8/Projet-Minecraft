@@ -96,9 +96,11 @@ public class Modele extends Observable implements Serializable{
 	}
 
 	public Craft testCraft(int i,int j){
-		if(this.tableCraft[i][j].getEnfants().containsKey(this.tableCraft[i][j].getName())) {
-			return this.tableCraft[i][j].getEnfants().get(this.tableCraft[i][j].getName());
-		}
+	    for (int k = 0 ; i < this.tableCraft[i][j].getEnfants().size() ; k++){
+	        if(this.tableCraft[i][j].getEnfants().get(k).getMatrice().equals(this.tableCraft)){
+	            return this.tableCraft[i][j].getEnfants().get(k);
+            }
+        }
 		return new Craft("blanc", "blanc.png", new Craft[3][3], Type.BASE, this.inventairePrincipal, true );
 	}
 
