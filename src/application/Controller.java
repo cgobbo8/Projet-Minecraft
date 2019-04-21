@@ -216,14 +216,17 @@ public class Controller implements Initializable {
 			if(this.modl.tableCraft[2][2] != null) {
 				for (int i = 0; i < this.modl.tableCraft.length; i++) {
 					for (int j = 0; j < this.modl.tableCraft.length; j++) {
-						Craft resultat=this.modl.testCraft(i,j);
-						if (resultat==null) {
-							this.modl.tableCraft= new Craft [][] {{null,null,null},{null,null,null},{null,null,null}};
-						}
-						else {
-							resultat.setEstTrouve(true);
-							System.out.println("CA MARCHE");
-						}
+					    if(this.modl.tableCraft[i][j] != blanc){
+                            Craft resultat=this.modl.testCraft(i,j);
+                            if (resultat==null) {
+                                this.modl.tableCraft= new Craft [][] {{null,null,null},{null,null,null},{null,null,null}};
+                            }
+                            else {
+                                resultat.setEstTrouve(true);
+                                System.out.println("CA MARCHE");
+                            }
+                        }
+
 					}
 				}
 			}
