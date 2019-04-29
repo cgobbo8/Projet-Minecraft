@@ -51,9 +51,9 @@ public class Craft extends ImageView implements Cloneable{
 			for (int i = 0 ; i < this.parents.size() ; i++){
 				this.parents.get(i).enfants.add(this);
 			}
-			
+
 			System.out.println(this.inv.toString());
-	
+
 		} catch (NullPointerException e) {
 
 		}
@@ -61,9 +61,16 @@ public class Craft extends ImageView implements Cloneable{
 
 	}
 
+	public boolean egaliteCraft(Craft a) {
+		boolean e = true;
+		if (this.nom != a.nom) {
+			e = false;
+		}
+		return e;
+	}
 
 	public Craft clone() {
-		return new Craft(this.nom + ".clone", this.ip, this.matriceCraft, this.type, this.estTrouve);
+		return new Craft(this.nom, this.ip, this.matriceCraft, this.type, this.estTrouve);
 	}
 
 	public String getName() {

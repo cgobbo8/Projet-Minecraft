@@ -21,6 +21,8 @@
 	-fx-effect: dropshadow( gaussian , black , 19,0,0,5 );
 }
 
+
+
 .BG2{
 
 	-fx-background-color:black;
@@ -32,6 +34,7 @@
 	-fx-border-radius:10px;
 	-fx-effect: innershadow( gaussian, white, 20, 0, 5, 5 );
 }
+
 
 #record-sales {
     -fx-padding: 8 15 15 15;
@@ -86,6 +89,13 @@
 #caseCraft{
     -fx-background-color: #9C9C9C;
     -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.5 ), 10, 0, 5, 5 );
+    -fx-background-radius: 5;
+}
+
+#caseCraft2{
+    -fx-background-color: #1C1F22;
+    -fx-opacity:0.7;
+    -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 1 ), 10, -10, 5, 5 );
     -fx-background-radius: 5;
 }
 

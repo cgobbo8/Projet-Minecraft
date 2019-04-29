@@ -89,12 +89,12 @@ public class Modele extends Observable implements Serializable{
 		return null;
 	}
 
-	public void suppressionTable(int i){ //Int i compris entre 0 et 8
-
+	public void suppressionTable(){ //Int i compris entre 0 et 8
+		this.tableCraft = new Craft[3][3];
 	}
 
 	public Craft testCraft(int i,int j){
-
+		
 		for (int j2 = 0; j2 < this.tableCraft.length; j2++) {
 			for (int k = 0; k < this.tableCraft.length; k++) {
 				for (int k2 = 0; k2 < this.tableCraft[i][j].getEnfants().size(); k2++) {
@@ -104,7 +104,8 @@ public class Modele extends Observable implements Serializable{
 				}
 			}
 		}
-		return new Craft("blanc", "blanc.png", new Craft[3][3], Type.BASE, true );
+		Craft nofind = new Craft("non trouvé", "cross2.png", new Craft[3][3], Type.BASE, true );
+		return nofind;
 	}
 
 	public void setTableCraft(Craft[][] tableCraft) {

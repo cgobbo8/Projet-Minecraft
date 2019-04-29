@@ -45,7 +45,7 @@ public class Controller implements Initializable {
 	@FXML
 	private Tab tab1,tab2,tab3,tab4,tab5 = new Tab();
 	@FXML
-	private AnchorPane pane1,pane2,pane3,pane4;
+	private AnchorPane pane1,pane2,pane3,pane4,inventaireFinal,bgnoir2,casesInv;
 	@FXML
 	private BorderPane c1,c2,c3,c4,c5,c6,c7,c8,c9;
 	@FXML
@@ -61,6 +61,11 @@ public class Controller implements Initializable {
 
 
 	ArrayList<BorderPane> l = new ArrayList<BorderPane>();
+	
+	ArrayList<BorderPane> listeBlocInv = new ArrayList<BorderPane>();
+	ArrayList<BorderPane> listSoluces = new ArrayList<BorderPane>();
+	
+	ArrayList<Craft> listTest;
 
 	Button btn;
 
@@ -70,6 +75,7 @@ public class Controller implements Initializable {
 	int caseX = 25;
 	int caseY = 80;
 	int indextable = 0;
+	int indexInv = 0;
 	Boolean flecheH = false;
 
 
@@ -103,6 +109,7 @@ public class Controller implements Initializable {
 		initialisationPane(pane2);
 		initialisationPane(pane3);
 		initialisationPane(pane4);
+		initialisationPaneInv(casesInv);
 
 		l.add(c1);
 		l.add(c2);
@@ -137,6 +144,28 @@ public class Controller implements Initializable {
 		});**/
 	}
 
+	public void initialisationPaneInv(AnchorPane a) {
+		caseX = 50;
+		caseY = 10;
+		for (int i = 0; i < 6; i++) {
+			caseX = 60;
+
+			for (int j = 0; j < 10; j++) {
+				bp = new BorderPane();
+				bp.setId("caseCraft2");
+				bp.setPrefSize(50, 50);
+				bp.setLayoutX(caseX);
+				bp.setLayoutY(caseY);
+				caseX+=55;
+				listeBlocInv.add(bp);
+				a.getChildren().add(bp);
+			}
+			caseY+=55;
+		}
+
+	}
+	
+	
 	public void initialisationPane(AnchorPane a) {
 		caseX = 20;
 		caseY = 80;
@@ -196,14 +225,39 @@ public class Controller implements Initializable {
 
 	}
 
+	private void testcraftcontroller() {
+		if(this.modl.tableCraft[2][2] != null) {
+			for (int i = 0; i < this.modl.tableCraft.length; i++) {
+				for (int j = 0; j < this.modl.tableCraft.length; j++) {
+					Craft resultat=this.modl.testCraft(i,j);
+					resultat.setEstTrouve(true);
+					craftFinal.setCenter(resultat.clone());
+					this.modl.suppressionTable();
+					for (int k = 0; k < l.size(); k++) {
+						l.get(k).setCenter(null);
+					}
+					
+					listTest = new ArrayList<Craft>();
+					for (int k = 0; k < listeBlocInv.size(); k++) {
+						listTest.add((Craft) listeBlocInv.get(i).getCenter());
+					}
+					if (!listTest.contains(resultat)) {
+						listeBlocInv.get(indexInv).setCenter(resultat.clone());
+						indexInv++;
+					}else {
+						System.out.println("h");
+					}
+
+					}
+				}
+			}
+
+	}
 
 
 	public void click(MouseEvent e) {
 
 		if(e.getTarget().getClass()==Craft.class ) {
-			
-
-
 
 			this.modl.ajoutCraftDansTable((Craft) e.getTarget()); 
 			Craft copyCraft = (Craft) e.getTarget();
@@ -214,20 +268,8 @@ public class Controller implements Initializable {
 			}
 
 			curseur();
+			testcraftcontroller();
 
-			if(this.modl.tableCraft[2][2] != null) {
-				for (int i = 0; i < this.modl.tableCraft.length; i++) {
-					for (int j = 0; j < this.modl.tableCraft.length; j++) {
-						Craft resultat=this.modl.testCraft(i,j);
-						if (resultat==null) {
-							this.modl.tableCraft= new Craft [][] {{null,null,null},{null,null,null},{null,null,null}};
-						}
-						else {
-							resultat.setEstTrouve(true);
-							craftFinal.setCenter(resultat.clone());
-						}
-					}
-				}
 			}
 			
 			String s = "";
@@ -243,7 +285,7 @@ public class Controller implements Initializable {
 			}
 
 		}
-	}
+	
 
 
 
@@ -296,10 +338,46 @@ public class Controller implements Initializable {
 
 	public void ouvrirInv(Event e) {
 		flecheH = !flecheH;
+		inventaireFinal.setVisible(true);
 		if (flecheH) {
+			bgnoir2.setVisible(true);
 			imgFleche.setRotate(90);
+			Path path = new Path();
+			path.getElements().add(new MoveTo(450,1000));
+			path.getElements().add(new LineTo(450, 255));
+			PathTransition pathTransition = new PathTransition();
+			pathTransition.setDuration(Duration.millis(2000));
+			pathTransition.setPath(path);
+			pathTransition.setNode(inventaireFinal);
+			pathTransition.play();
+			
+			FadeTransition opacity = new FadeTransition(Duration.millis(2000), bgnoir2);
+			opacity.setFromValue(0);
+			opacity.setToValue(0.9);
+			opacity.play();
+			
 		} else {
 			imgFleche.setRotate(-90);
+			Path path = new Path();
+			path.getElements().add(new MoveTo(450, 255));
+			path.getElements().add(new LineTo(450,1000));
+			PathTransition pathTransition = new PathTransition();
+			pathTransition.setDuration(Duration.millis(2000));
+			pathTransition.setPath(path);
+			pathTransition.setNode(inventaireFinal);
+			pathTransition.play();
+			
+			FadeTransition opacity = new FadeTransition(Duration.millis(2000), bgnoir2);
+			opacity.setFromValue(0.9);
+			opacity.setToValue(0);
+			opacity.play();
+			opacity.onFinishedProperty().set(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					bgnoir2.setVisible(false);
+				}
+			});
+			
 		}
 
 	}
@@ -360,7 +438,12 @@ public class Controller implements Initializable {
 				btnplay.setVisible(false);
 				settings.setVisible(false);
 				exit.setVisible(false);
-
+				
+				btnFleche.setVisible(true);
+				FadeTransition ft5 = new FadeTransition(Duration.millis(1000), btnFleche);
+				ft5.setFromValue(0);
+				ft5.setToValue(0.7);
+				ft5.play();
 				inventaire.setVisible(true);
 				FadeTransition ft4 = new FadeTransition(Duration.millis(1000), inventaire);
 				ft4.setFromValue(0);
