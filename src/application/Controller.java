@@ -12,22 +12,16 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -62,6 +56,8 @@ public class Controller implements Initializable {
 	private Button test2;
 	@FXML
 	public AnchorPane btnFleche;
+	@FXML
+	public BorderPane craftFinal;
 
 
 	ArrayList<BorderPane> l = new ArrayList<BorderPane>();
@@ -81,14 +77,14 @@ public class Controller implements Initializable {
 	double orgTranslateX, orgTranslateY;
 
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm())); 
-	Craft blanc = new Craft("blanc", "blanc.png", new Craft[][] {{null,null,null},{null,null,null},{null,null,null},} ,Type.BASE, new Inventaire(),true) ;
-	Craft craftTest = new Craft("bed", "bed.png",new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}},Type.BASE,new Inventaire(),true);
+	Craft blanc = new Craft("blanc", "blanc.png", new Craft[][] {{null,null,null},{null,null,null},{null,null,null},} ,Type.BASE,true) ;
+	Craft craftTest = new Craft("bed", "bed.png",new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}},Type.BASE,true);
 
-	Craft apple = new Craft("apple", "ressources/crafts/apple.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.NOURRITURE, modl.getInventairePrincipal(),true) ;
-	Craft diamond = new Craft("diamond", "ressources/crafts/diamond.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE,modl.getInventairePrincipal(), true) ;
+	Craft apple = new Craft("apple", "ressources/crafts/apple.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.NOURRITURE, true) ;
+	Craft diamond = new Craft("diamond", "ressources/crafts/diamond.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, true) ;
 
-	Craft cobble = new Craft("cobblestone", "ressources/crafts/cobblestone.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BLOC, modl.getInventairePrincipal(),true) ;
-	Craft four = new Craft("four", "ressources/crafts/furnace_front_on.png", new Craft [][] {{cobble,cobble,cobble},{cobble,blanc,cobble},{cobble,cobble,cobble}} , Type.BASE, modl.getInventairePrincipal(),false) ;
+	Craft cobble = new Craft("cobblestone", "ressources/crafts/cobblestone.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BLOC, true) ;
+	Craft four = new Craft("four", "ressources/crafts/furnace_front_on.png", new Craft [][] {{cobble,cobble,cobble},{cobble,blanc,cobble},{cobble,cobble,cobble}} , Type.BASE, false) ;
 
 
 	public Controller() {
@@ -117,6 +113,10 @@ public class Controller implements Initializable {
 		l.add(c7);
 		l.add(c8);
 		l.add(c9);
+		
+		for (int i = 0; i < cobble.getParents().size(); i++) {
+			System.out.println(four.getParents().get(i).getName());
+		}
 
 		for (int i = 0; i < l.size(); i++) {
 			l.get(i).getBottom().setOpacity(0);
@@ -157,12 +157,11 @@ public class Controller implements Initializable {
 			caseY+=55;
 		}
 
-		for (int i = 0; i < 10; i++) {
-			btn = new Button("bjr");
+		for (int i = 0; i < 2; i++) {
 			listeBloc.get(i).setCenter(craftTest.clone());
 		}
-		listeBloc.get(15).setCenter(cobble.clone());
-		listeBloc.get(16).setCenter(four.clone());
+		listeBloc.get(15).setCenter(cobble);
+		listeBloc.get(16).setCenter(four);
 
 	}
 
@@ -188,7 +187,7 @@ public class Controller implements Initializable {
 	public void cl(Event e) {
 		Craft copy = blanc.clone();
 		l.get(indextable).setCenter(copy);
-		this.modl.ajoutCraftDansTable(copy);
+		this.modl.ajoutCraftDansTable(blanc);
 		indextable++;
 		if (indextable == 9) {
 			indextable = 0;
@@ -202,6 +201,9 @@ public class Controller implements Initializable {
 	public void click(MouseEvent e) {
 
 		if(e.getTarget().getClass()==Craft.class ) {
+			
+
+
 
 			this.modl.ajoutCraftDansTable((Craft) e.getTarget()); 
 			Craft copyCraft = (Craft) e.getTarget();
@@ -216,36 +218,42 @@ public class Controller implements Initializable {
 			if(this.modl.tableCraft[2][2] != null) {
 				for (int i = 0; i < this.modl.tableCraft.length; i++) {
 					for (int j = 0; j < this.modl.tableCraft.length; j++) {
-					    if(this.modl.tableCraft[i][j] != blanc){
-                            Craft resultat=this.modl.testCraft(i,j);
-                            if (resultat==null) {
-                                this.modl.tableCraft= new Craft [][] {{null,null,null},{null,null,null},{null,null,null}};
-                            }
-                            else {
-                                resultat.setEstTrouve(true);
-                                System.out.println("CA MARCHE");
-                            }
-                        }
-
+						Craft resultat=this.modl.testCraft(i,j);
+						if (resultat==null) {
+							this.modl.tableCraft= new Craft [][] {{null,null,null},{null,null,null},{null,null,null}};
+						}
+						else {
+							resultat.setEstTrouve(true);
+							craftFinal.setCenter(resultat.clone());
+						}
 					}
 				}
 			}
-
+			
+			String s = "";
+			try {
+				for (int j2 = 0; j2 < this.modl.tableCraft.length; j2++) {
+					for (int k = 0; k < this.modl.tableCraft.length; k++) {
+						s+= this.modl.tableCraft[j2][k].getName() + " ";
+					}
+				}
+				System.out.println(s);
+			} catch (NullPointerException e2) {
+				// TODO: handle exception
+			}
 
 		}
-
-
-
 	}
 
 
 
-	public void crafting() {
+	public void crafting(Craft c) {
 		indextable = 0;
 		curseur();
 		for (int i = 0; i < l.size(); i++) {
 			l.get(i).setCenter(blanc.clone() );
 		}
+		craftFinal.setCenter(c);
 	}
 
 	public void curseur() {

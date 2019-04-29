@@ -38,8 +38,6 @@ public class VuePrincipale extends Application {
             	clic.setVolume(0.5) ;
             	clic.play();
 
-            	
-            	
             });
 
             

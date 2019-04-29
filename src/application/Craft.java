@@ -20,7 +20,7 @@ public class Craft extends ImageView implements Cloneable{
 	private Inventaire inv;
 
 
-	public Craft(String n, String ip, Craft[][] c, Type t, Inventaire inv,boolean et) {
+	public Craft(String n, String ip, Craft[][] c, Type t,boolean et) {
 		this.ip = ip;
 		this.img = new Image(getClass().getResourceAsStream(ip));
 		this.setImage(this.img);
@@ -32,7 +32,6 @@ public class Craft extends ImageView implements Cloneable{
 
 
 
-		this.inv = inv;
 		this.nom = n;
 		this.type = t;
 		this.matriceCraft = c;
@@ -52,35 +51,20 @@ public class Craft extends ImageView implements Cloneable{
 			for (int i = 0 ; i < this.parents.size() ; i++){
 				this.parents.get(i).enfants.add(this);
 			}
-			this.inv.addCraft(this);
+			
+			System.out.println(this.inv.toString());
 	
-			
-		/*	for(String key : this.parents.keySet()) {
-				Craft cparent = this.parents.get(key);
-				for(String keyEnf : cparent.enfants.keySet()) {
-					Craft cenf = cparent.enfants.get(keyEnf);
-					System.out.println("Enfants de  " + cparent.getName() + " : " + cenf.getName());
-				}
-			}*/
-			
-			
-			
-			
 		} catch (NullPointerException e) {
 
 		}
-		
-		System.out.println("Parents de  " + this.getName() + " : " + this.parents);
+
 
 	}
-
-
 
 
 	public Craft clone() {
-		return new Craft(this.nom, this.ip, this.matriceCraft, this.type, this.inv, this.estTrouve);
+		return new Craft(this.nom + ".clone", this.ip, this.matriceCraft, this.type, this.estTrouve);
 	}
-
 
 	public String getName() {
 		return this.nom;

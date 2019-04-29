@@ -2,8 +2,6 @@ package application;
 
 import java.util.ArrayList;
 
-import application.Craft.Type;
-
 public class Inventaire {
 	private ArrayList<Craft> inventaire;
 	private ArrayList<Craft> bloc;
@@ -27,6 +25,14 @@ public class Inventaire {
 		
 		}
 	
+	@Override
+	public String toString() {
+		String s = "";
+		for (int i = 0; i < this.inventaire.size(); i++) {
+			s+= this.inventaire.get(i).getName();
+		}
+		return s;
+	}
 	public void addCraft(Craft a) {
 		
 		this.inventaire.add(a);

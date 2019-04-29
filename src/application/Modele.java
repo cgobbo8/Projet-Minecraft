@@ -1,12 +1,9 @@
 package application;
 
-import java.awt.List;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Observable;
 
 import application.Craft.Type;
@@ -23,15 +20,15 @@ public class Modele extends Observable implements Serializable{
 	File fichierCraft = new File("Projet-Minecraft/testest.csv");
 
 	public Modele(Inventaire i) {
-		this.inventairePrincipal = i;
-		try {
-			FileOutputStream fos = new FileOutputStream(fichierCraft);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			
-			
-		} catch (IOException e1) {
-			throw new RuntimeException("Impossible");
-		}
+//		this.inventairePrincipal = i;
+//		try {
+//			FileOutputStream fos = new FileOutputStream(fichierCraft);
+//			ObjectOutputStream oos = new ObjectOutputStream(fos);
+//			
+//			
+//		} catch (IOException e1) {
+//			throw new RuntimeException("Impossible");
+//		}
 		
 		
 	}
@@ -47,7 +44,7 @@ public class Modele extends Observable implements Serializable{
 		for (int i = 0; i < tableCraft.length; i++) {
 			for (int j = 0; j < tableCraft.length; j++) {
 				try {
-					s+=tableCraft[i][j].getEnfants() + " ";
+					s+=tableCraft[i][j].getName() + " ";
 				} catch (NullPointerException e) {
 					// TODO: handle exception
 				}
@@ -75,6 +72,7 @@ public class Modele extends Observable implements Serializable{
 		if(i < 3 && j < 3){
 			this.tableCraft[i][j] = c;
 		}
+
 	}
 
 	public ArrayList<Integer> estDansTable(Craft c){
@@ -96,17 +94,24 @@ public class Modele extends Observable implements Serializable{
 	}
 
 	public Craft testCraft(int i,int j){
-	    for (int k = 0 ; i < this.tableCraft[i][j].getEnfants().size() ; k++){
-	        if(this.tableCraft[i][j].getEnfants().get(k).getMatrice().equals(this.tableCraft)){
-	            return this.tableCraft[i][j].getEnfants().get(k);
-            }
-        }
-		return new Craft("blanc", "blanc.png", new Craft[3][3], Type.BASE, this.inventairePrincipal, true );
+
+		for (int j2 = 0; j2 < this.tableCraft.length; j2++) {
+			for (int k = 0; k < this.tableCraft.length; k++) {
+				for (int k2 = 0; k2 < this.tableCraft[i][j].getEnfants().size(); k2++) {
+					if(Arrays.deepEquals(this.tableCraft,this.tableCraft[j2][k].getEnfants().get(k2).getMatrice())) {
+						return this.tableCraft[i][j].getEnfants().get(k);
+					}
+				}
+			}
+		}
+		return new Craft("blanc", "blanc.png", new Craft[3][3], Type.BASE, true );
 	}
 
 	public void setTableCraft(Craft[][] tableCraft) {
 		this.tableCraft = tableCraft;
 	}
+	
+	
 	//	public static void main(String[] args) {
 	//		
 	//		Modele mo = new Modele(new Inventaire());

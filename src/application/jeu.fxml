@@ -515,7 +515,7 @@
                            </stroke>
                         </Ellipse>
                      </bottom></BorderPane>
-                  <BorderPane id="caseCraft" layoutX="136.0" layoutY="35.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
+                  <BorderPane id="caseCraft" fx:id="craftFinal" layoutX="136.0" layoutY="35.0" prefHeight="53.0" prefWidth="63.0" styleClass="caseCraft" stylesheets="@application.css" />
                   <Polygon id="cur" fx:id="flecheHaut" fill="#959595" layoutX="166.0" layoutY="120.0" onMouseClicked="#crafting" scaleX="0.4" scaleY="0.3" stroke="TRANSPARENT" strokeLineJoin="BEVEL" strokeType="INSIDE" styleClass="cur">
                     <points>
                       <Double fx:value="-50.0" />
