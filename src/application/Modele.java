@@ -36,6 +36,7 @@ public class Modele extends Observable {
         	String[] crf = parts[2].split("/");
         	
         	Craft c = new Craft(parts[0],parts[1],new Craft[][] {{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0])},{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0])},{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0])}},Type.valueOf(crf[3]),Boolean.getBoolean(crf[4]));
+        	this.inventairePrincipal.getInventaire().put(crf[0], c);
         }
 	}
 
