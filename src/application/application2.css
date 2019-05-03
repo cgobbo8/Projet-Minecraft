@@ -1,7 +1,7 @@
 
 
 .BG{
-	-fx-background-image: url("ressources/wallpaper.jpg") ;
+	-fx-background-image: url("ressources/cobblepaper.png") ;
 	-fx-background-size: contain ;
 	-fx-background-repeat: no-repeat ;
 }
@@ -29,7 +29,7 @@
 }
 
 .fondInventaire{
-	-fx-background-color:#C6C6C6;
+	-fx-background-color:#000;
 	-fx-background-radius:20px;
 	-fx-border-radius:10px;
 	-fx-effect: innershadow( gaussian, white, 20, 0, 5, 5 );
@@ -87,13 +87,13 @@
 	}
 
 #caseCraft{
-    -fx-background-color: #9C9C9C;
+    -fx-background-color: #001;
     -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.5 ), 10, 0, 5, 5 );
     -fx-background-radius: 5;
 }
 
 #caseCraft2{
-    -fx-background-color: #1C1F22;
+    -fx-background-color: #000;
     -fx-opacity:0.7;
     -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 1 ), 10, -10, 5, 5 );
     -fx-background-radius: 5;
@@ -103,11 +103,11 @@
 
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
-    -fx-background-color:#9C9C9C;
+    -fx-background-color:#000;
 }
 
 .increment-button, .decrement-button {
-    -fx-background-color: #9C9C9C;
+    -fx-background-color: #000;
     -fx-border-color: transparent;
     	-fx-border-radius:20px;
 	-fx-background-radius: 5em;
@@ -115,7 +115,7 @@
 
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
-    -fx-background-color: #BDBDBD;
+    -fx-background-color: #000;
     -fx-border-color: transparent;
     -fx-background-radius: 0em;
     -fx-effect: innershadow( gaussian, #9C9C9C, 20, 0, 5, 5 );
@@ -129,7 +129,7 @@
 
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-    -fx-background-color: #9C9C9C;
+    -fx-background-color: #000;
     -fx-background-radius: 0em;
 }
 

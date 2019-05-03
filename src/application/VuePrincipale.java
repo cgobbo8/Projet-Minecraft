@@ -18,16 +18,15 @@ public class VuePrincipale extends Application {
     public void start(Stage primaryStage) throws Exception{
     	
     	try {
-    		Modele modl = new Modele(new Inventaire());
     		
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("jeu.fxml"));
     		Controller ctrl = new Controller();
     		loader.setController(ctrl);
             Parent root = (Parent) loader.load();
 
-            Scene scene = new Scene(root, 1099, 619);
-
+            Scene scene = new Scene(root, 1099, 615);
             
+            primaryStage.setResizable(false);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("MineCraft");
             primaryStage.setScene(scene);

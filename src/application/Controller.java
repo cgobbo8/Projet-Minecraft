@@ -13,9 +13,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -37,7 +40,7 @@ public class Controller implements Initializable {
 	@FXML
 	private Button btnplay,settings,exit,settingCancel,btnBlanc = new Button();
 	@FXML
-	private ImageView titre,imgFleche;
+	private ImageView titre,imgFleche, imageCraft;
 	@FXML
 	private AnchorPane inventaire,background,bgopacity,panelSetting,menuprinc,matrice = new AnchorPane();
 	@FXML
@@ -49,6 +52,8 @@ public class Controller implements Initializable {
 	@FXML
 	private BorderPane c1,c2,c3,c4,c5,c6,c7,c8,c9;
 	@FXML
+	private BorderPane d1,d2,d3,d4,d5,d6,d7,d8,d9;
+	@FXML
 	private Rectangle flecheBas;
 	@FXML
 	private Polygon flecheHaut;
@@ -58,17 +63,25 @@ public class Controller implements Initializable {
 	public AnchorPane btnFleche;
 	@FXML
 	public BorderPane craftFinal;
+	@FXML
+	public Label scoreCraft, nomCraft, labelTest, affScore;
+	@FXML
+	public ProgressBar pg;
 
 
 	ArrayList<BorderPane> l = new ArrayList<BorderPane>();
-	
+	ArrayList<BorderPane> matriceInv = new ArrayList<BorderPane>();
+
 	ArrayList<BorderPane> listeBlocInv = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listSoluces = new ArrayList<BorderPane>();
-	
+
+	ArrayList<Craft> listeCraft = new ArrayList<Craft>();
+	int scoreFinal = 40; //listeCraft.size();
+
+
 	ArrayList<Craft> listTest;
 
 	Button btn;
-
 
 	ArrayList<BorderPane> listeBloc = new ArrayList<BorderPane>();
 	BorderPane bp;
@@ -76,22 +89,23 @@ public class Controller implements Initializable {
 	int caseY = 80;
 	int indextable = 0;
 	int indexInv = 0;
+	public int score = 0;
 	Boolean flecheH = false;
 
 
 	double orgSceneX, orgSceneY;
 	double orgTranslateX, orgTranslateY;
 
-	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm())); 
+	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music.mp3").toExternalForm())); 
 	Craft blanc = new Craft("blanc", "blanc.png", new Craft[][] {{null,null,null},{null,null,null},{null,null,null},} ,Type.BASE,true) ;
-	Craft craftTest = new Craft("bed", "bed.png",new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}},Type.BASE,true);
+
 
 	Craft apple = new Craft("apple", "ressources/crafts/apple.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.NOURRITURE, true) ;
 	Craft diamond = new Craft("diamond", "ressources/crafts/diamond.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, true) ;
 
 	Craft cobble = new Craft("cobblestone", "ressources/crafts/cobblestone.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BLOC, true) ;
 	Craft four = new Craft("four", "ressources/crafts/furnace_front_on.png", new Craft [][] {{cobble,cobble,cobble},{cobble,blanc,cobble},{cobble,cobble,cobble}} , Type.BASE, false) ;
-
+	Craft craftTest = new Craft("bed", "bed.png",new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,cobble}},Type.BASE,true);
 
 	public Controller() {
 
@@ -111,16 +125,10 @@ public class Controller implements Initializable {
 		initialisationPane(pane4);
 		initialisationPaneInv(casesInv);
 
-		l.add(c1);
-		l.add(c2);
-		l.add(c3);
-		l.add(c4);
-		l.add(c5);
-		l.add(c6);
-		l.add(c7);
-		l.add(c8);
-		l.add(c9);
-		
+		l.add(c1);l.add(c2);l.add(c3);l.add(c4);l.add(c5);l.add(c6);l.add(c7);l.add(c8);l.add(c9);
+
+		matriceInv.add(d1);matriceInv.add(d2);matriceInv.add(d3);matriceInv.add(d4);matriceInv.add(d5);matriceInv.add(d6);matriceInv.add(d7);matriceInv.add(d8);matriceInv.add(d9);
+
 		for (int i = 0; i < cobble.getParents().size(); i++) {
 			System.out.println(four.getParents().get(i).getName());
 		}
@@ -157,6 +165,36 @@ public class Controller implements Initializable {
 				bp.setLayoutX(caseX);
 				bp.setLayoutY(caseY);
 				caseX+=55;
+				bp.setOnMouseClicked(new EventHandler<Event>() {
+
+					@Override
+					public void handle(Event e) {
+						Craft c = (Craft) e.getTarget();
+						System.out.println(c.getName());
+						nomCraft.setText(c.getName());
+
+						Image img = new Image(getClass().getResourceAsStream(c.ip));
+						imageCraft.setImage(img);
+
+						Craft[][] matriceCraft = c.getMatrice();
+
+						ArrayList<Craft> lC = new ArrayList<Craft>();
+						for (int j2 = 0; j2 < matriceCraft.length; j2++) {
+							for (int j3 = 0; j3 < matriceCraft.length; j3++) {
+								lC.add(matriceCraft[j2][j3]);
+							}
+						}
+
+						for (int j2 = 0; j2 < lC.size(); j2++) {
+							if (lC.get(j2).getName() != "blanc") {
+								matriceInv.get(j2).setCenter(lC.get(j2).clone());	
+							}
+
+						}
+
+
+					}
+				});
 				listeBlocInv.add(bp);
 				a.getChildren().add(bp);
 			}
@@ -164,8 +202,8 @@ public class Controller implements Initializable {
 		}
 
 	}
-	
-	
+
+
 	public void initialisationPane(AnchorPane a) {
 		caseX = 20;
 		caseY = 80;
@@ -195,12 +233,12 @@ public class Controller implements Initializable {
 	}
 
 
-	EventHandler<MouseEvent> circleOnMousePressedEventHandler = 
+	EventHandler<MouseEvent> infoCraft = 
 			new EventHandler<MouseEvent>() {
 
 		@Override
 		public void handle(MouseEvent t) {
-
+			clickInfoCraft(t);
 		}
 	};
 
@@ -236,28 +274,43 @@ public class Controller implements Initializable {
 					for (int k = 0; k < l.size(); k++) {
 						l.get(k).setCenter(null);
 					}
-					
+
+					Craft craftInv;
 					listTest = new ArrayList<Craft>();
 					for (int k = 0; k < listeBlocInv.size(); k++) {
-						listTest.add((Craft) listeBlocInv.get(i).getCenter());
+						craftInv = (Craft) listeBlocInv.get(i).getCenter();
+						listTest.add(craftInv);
 					}
 					if (!listTest.contains(resultat)) {
 						listeBlocInv.get(indexInv).setCenter(resultat.clone());
 						indexInv++;
+						score++;
+						affScore.setText(score + "/100");
+
+						int prog = ((score*100)/scoreFinal)/100;
+						pg.setProgress(prog);
+						System.out.println(prog);
+
 					}else {
 						System.out.println("h");
 					}
 
-					}
 				}
 			}
-
+		}
 	}
 
 
+	public void clickInfoCraft(MouseEvent e) {
+		Craft currentCraft = (Craft) e.getTarget();
+		nomCraft.setText(currentCraft.getName());
+		System.out.println(currentCraft.getName());
+
+	}
+
 	public void click(MouseEvent e) {
 
-		if(e.getTarget().getClass()==Craft.class ) {
+		if(e.getTarget().getClass()==Craft.class && !flecheH ) {
 
 			this.modl.ajoutCraftDansTable((Craft) e.getTarget()); 
 			Craft copyCraft = (Craft) e.getTarget();
@@ -270,22 +323,22 @@ public class Controller implements Initializable {
 			curseur();
 			testcraftcontroller();
 
-			}
-			
-			String s = "";
-			try {
-				for (int j2 = 0; j2 < this.modl.tableCraft.length; j2++) {
-					for (int k = 0; k < this.modl.tableCraft.length; k++) {
-						s+= this.modl.tableCraft[j2][k].getName() + " ";
-					}
-				}
-				System.out.println(s);
-			} catch (NullPointerException e2) {
-				// TODO: handle exception
-			}
-
 		}
-	
+
+		String s = "";
+		try {
+			for (int j2 = 0; j2 < this.modl.tableCraft.length; j2++) {
+				for (int k = 0; k < this.modl.tableCraft.length; k++) {
+					s+= this.modl.tableCraft[j2][k].getName() + " ";
+				}
+			}
+			System.out.println(s);
+		} catch (NullPointerException e2) {
+			// TODO: handle exception
+		}
+
+	}
+
 
 
 
@@ -350,12 +403,12 @@ public class Controller implements Initializable {
 			pathTransition.setPath(path);
 			pathTransition.setNode(inventaireFinal);
 			pathTransition.play();
-			
+
 			FadeTransition opacity = new FadeTransition(Duration.millis(2000), bgnoir2);
 			opacity.setFromValue(0);
 			opacity.setToValue(0.9);
 			opacity.play();
-			
+
 		} else {
 			imgFleche.setRotate(-90);
 			Path path = new Path();
@@ -366,7 +419,7 @@ public class Controller implements Initializable {
 			pathTransition.setPath(path);
 			pathTransition.setNode(inventaireFinal);
 			pathTransition.play();
-			
+
 			FadeTransition opacity = new FadeTransition(Duration.millis(2000), bgnoir2);
 			opacity.setFromValue(0.9);
 			opacity.setToValue(0);
@@ -377,7 +430,7 @@ public class Controller implements Initializable {
 					bgnoir2.setVisible(false);
 				}
 			});
-			
+
 		}
 
 	}
@@ -430,7 +483,7 @@ public class Controller implements Initializable {
 		opacity.setToValue(0.5);
 		opacity.play();
 
-		//		music.play();
+		music.play();
 		btsettings.onFinishedProperty().set(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -438,7 +491,7 @@ public class Controller implements Initializable {
 				btnplay.setVisible(false);
 				settings.setVisible(false);
 				exit.setVisible(false);
-				
+
 				btnFleche.setVisible(true);
 				FadeTransition ft5 = new FadeTransition(Duration.millis(1000), btnFleche);
 				ft5.setFromValue(0);
