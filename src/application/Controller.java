@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -139,8 +140,12 @@ public class Controller implements Initializable {
 		}
 		l.get(0).getBottom().setOpacity(1);
 
-
-
+		try {
+			this.modl.serialisation();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		//		PEUT ETRE SERVIALBLE POUR LA SUITE 
 		/**

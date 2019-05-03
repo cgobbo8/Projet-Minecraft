@@ -1,9 +1,10 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Inventaire {
-	private ArrayList<Craft> inventaire;
+	private HashMap<String, Craft> inventaire;
 	private ArrayList<Craft> bloc;
 	private ArrayList<Craft> combat;
 	private ArrayList<Craft> outil;
@@ -13,7 +14,7 @@ public class Inventaire {
 	private ArrayList<Craft> base;
 	
 	public Inventaire() {
-		this.inventaire = new ArrayList<>();
+		this.inventaire = new HashMap<>();
 		this.bloc = new ArrayList<>();
 		this.combat = new ArrayList<>();
 		this.outil = new ArrayList<>();
@@ -35,7 +36,7 @@ public class Inventaire {
 	}
 	public void addCraft(Craft a) {
 		
-		this.inventaire.add(a);
+		this.inventaire.put(a.getName(),a);
 		
 		switch(a.getType()) {
 		  case BLOC:
@@ -65,7 +66,9 @@ public class Inventaire {
 		}
 	}
 	
-	
+	public HashMap<String, Craft> getInventaire() {
+		return inventaire;
+	}
 	
 
 }
