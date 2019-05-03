@@ -1,6 +1,10 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +15,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 
-public class Modele extends Observable implements Serializable{
+public class Modele extends Observable {
 
 
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm()));
@@ -20,17 +24,19 @@ public class Modele extends Observable implements Serializable{
 	File fichierCraft = new File("Projet-Minecraft/testest.csv");
 
 	public Modele(Inventaire i) {
-//		this.inventairePrincipal = i;
-//		try {
-//			FileOutputStream fos = new FileOutputStream(fichierCraft);
-//			ObjectOutputStream oos = new ObjectOutputStream(fos);
-//			
-//			
-//		} catch (IOException e1) {
-//			throw new RuntimeException("Impossible");
-//		}
 		
 		
+	}
+	
+	public void serialisation() throws IOException {
+		FileReader fr = new FileReader(new File("craft.txt"));
+        BufferedReader br = new BufferedReader(fr);
+        for (String line = br.readLine(); line !=null; line = br.readLine()) {
+        	String[] parts = line.split(";");
+        	String[] crf = parts[2].split("/");
+        	
+        	Craft c = new Craft(parts[0],parts[1],new Craft[][] {{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0])},{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0])},{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0])}},Type.valueOf(crf[3]),Boolean.getBoolean(crf[4]));
+        }
 	}
 
 	public Craft[][] getTableCraft() {
