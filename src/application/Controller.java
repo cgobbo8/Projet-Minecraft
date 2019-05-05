@@ -84,7 +84,17 @@ public class Controller implements Initializable {
 
 	Button btn;
 
+
 	ArrayList<BorderPane> listeBloc = new ArrayList<BorderPane>();
+	
+	ArrayList<BorderPane> listeTypeBloc = new ArrayList<BorderPane>();
+	ArrayList<BorderPane> listeTypeCombat = new ArrayList<BorderPane>();
+	ArrayList<BorderPane> listeTypeOutil = new ArrayList<BorderPane>();
+	ArrayList<BorderPane> listeTypeRedstone = new ArrayList<BorderPane>();
+	ArrayList<BorderPane> listeTypeDeco = new ArrayList<BorderPane>();
+	ArrayList<BorderPane> listeTypeBase = new ArrayList<BorderPane>();
+	
+	
 	BorderPane bp;
 	int caseX = 25;
 	int caseY = 80;
@@ -120,12 +130,6 @@ public class Controller implements Initializable {
 		tab4.setTooltip(new Tooltip("Tous les armes"));
 		tab1.setTooltip(new Tooltip("Blocs elementaires"));
 
-		initialisationPane(pane1);
-		initialisationPane(pane2);
-		initialisationPane(pane3);
-		initialisationPane(pane4);
-		initialisationPaneInv(casesInv);
-
 		l.add(c1);l.add(c2);l.add(c3);l.add(c4);l.add(c5);l.add(c6);l.add(c7);l.add(c8);l.add(c9);
 
 		matriceInv.add(d1);matriceInv.add(d2);matriceInv.add(d3);matriceInv.add(d4);matriceInv.add(d5);matriceInv.add(d6);matriceInv.add(d7);matriceInv.add(d8);matriceInv.add(d9);
@@ -141,11 +145,27 @@ public class Controller implements Initializable {
 		l.get(0).getBottom().setOpacity(1);
 
 		try {
+			this.modl.inventairePrincipal.addCraft(blanc);
 			this.modl.serialisation();
+
+			for (int i = 0; i < this.modl.inventairePrincipal.getListeInventaire().size(); i++) {
+				System.out.println(this.modl.inventairePrincipal.getListeInventaire().get(i).getName());
+			}
+
+		} catch (NullPointerException e) {
+			System.out.println("bizarre");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		initialisationPane(pane1);
+		initialisationPane(pane2);
+		initialisationPane(pane3);
+		initialisationPane(pane4);
+		initialisationPaneInv(casesInv);
+
+
 
 		//		PEUT ETRE SERVIALBLE POUR LA SUITE 
 		/**
@@ -229,11 +249,10 @@ public class Controller implements Initializable {
 			caseY+=55;
 		}
 
-		for (int i = 0; i < 2; i++) {
-			listeBloc.get(i).setCenter(craftTest.clone());
+		System.out.println(this.modl.inventairePrincipal.getListeInventaire().size());
+		for (int i = 0; i < this.modl.inventairePrincipal.getListeInventaire().size(); i++) {
+			listeBloc.get(i).setCenter(this.modl.inventairePrincipal.getListeInventaire().get(i));
 		}
-		listeBloc.get(15).setCenter(cobble);
-		listeBloc.get(16).setCenter(four);
 
 	}
 

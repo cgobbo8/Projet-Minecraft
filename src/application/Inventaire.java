@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class Inventaire {
 	private HashMap<String, Craft> inventaire;
+	private ArrayList<Craft> listeInventaire;
 	private ArrayList<Craft> bloc;
 	private ArrayList<Craft> combat;
 	private ArrayList<Craft> outil;
@@ -15,6 +16,7 @@ public class Inventaire {
 	
 	public Inventaire() {
 		this.inventaire = new HashMap<>();
+		this.listeInventaire = new ArrayList<Craft>();
 		this.bloc = new ArrayList<>();
 		this.combat = new ArrayList<>();
 		this.outil = new ArrayList<>();
@@ -26,6 +28,7 @@ public class Inventaire {
 		
 		}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public String toString() {
 		String s = "";
@@ -34,9 +37,14 @@ public class Inventaire {
 		}
 		return s;
 	}
+	
 	public void addCraft(Craft a) {
 		
 		this.inventaire.put(a.getName(),a);
+		if (a.getName() != "blanc") {
+			this.listeInventaire.add(a);
+		}
+		
 		
 		switch(a.getType()) {
 		  case BLOC:
@@ -67,8 +75,15 @@ public class Inventaire {
 	}
 	
 	public HashMap<String, Craft> getInventaire() {
-		return inventaire;
+		return this.inventaire;
+	}
+	
+	public ArrayList<Craft> getListeInventaire() {
+		return this.listeInventaire;
 	}
 	
 
-}
+	}
+	
+
+

@@ -23,7 +23,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#click" prefHeight="619.0" prefWidth="1099.0" styleClass="BG" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#click" prefHeight="619.0" prefWidth="1099.0" styleClass="BG" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <AnchorPane fx:id="bgopacity" opacity="0.0" prefHeight="619.0" prefWidth="1099.0" styleClass="BG2" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="menuprinc" prefHeight="619.0" prefWidth="1099.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -367,11 +367,11 @@
                   </Tab>
                   <Tab fx:id="tab5" closable="false" styleClass="cur">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="559.0" styleClass="fondInventaire" stylesheets="@application.css">
+                        <AnchorPane fx:id="pane5" minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="559.0" styleClass="fondInventaire" stylesheets="@application.css">
                            <children>
                               <ScrollPane hbarPolicy="NEVER" layoutX="97.0" layoutY="-2.0" prefHeight="301.0" prefWidth="592.0" styleClass="scrollbar" stylesheets="@application.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="0.0">
                                  <content>
-                                    <AnchorPane layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" stylesheets="@application.css" translateX="15.0">
+                                    <AnchorPane fx:id="pane5" layoutX="40.0" minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="531.0" stylesheets="@application.css" translateX="15.0">
                                        <children>
                                           <Label layoutX="196.0" layoutY="14.0" text="Tous les éléments">
                                              <font>

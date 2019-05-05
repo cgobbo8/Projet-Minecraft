@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -20,9 +21,7 @@ public class VuePrincipale extends Application {
     	try {
     		
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("jeu.fxml"));
-    		Controller ctrl = new Controller();
-    		loader.setController(ctrl);
-            Parent root = (Parent) loader.load();
+            AnchorPane root = (AnchorPane) loader.load();
 
             Scene scene = new Scene(root, 1099, 615);
             

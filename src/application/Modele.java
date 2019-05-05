@@ -2,10 +2,8 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
@@ -20,31 +18,37 @@ public class Modele extends Observable {
 
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music2.mp3").toExternalForm()));
 	Craft[][] tableCraft = new Craft[3][3];
-	Inventaire inventairePrincipal;
+	Inventaire inventairePrincipal = new Inventaire();
 	File fichierCraft = new File("Projet-Minecraft/testest.csv");
 
 	public Modele(Inventaire i) {
-		
-		
+
+
 	}
-	
+
 	public void serialisation() throws IOException {
-		FileReader fr = new FileReader(new File("craft.txt"));
-        BufferedReader br = new BufferedReader(fr);
-        for (String line = br.readLine(); line !=null; line = br.readLine()) {
-        	String[] parts = line.split(";");
-        	String[] crf = parts[2].split("/");
-        	
-        	Craft c = new Craft(parts[0],parts[1],new Craft[][] {{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0])},{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0])},{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[0])}},Type.valueOf(crf[3]),Boolean.getBoolean(crf[4]));
-        	this.inventairePrincipal.getInventaire().put(crf[0], c);
-        }
+
+		try(FileReader fr = new FileReader("craft.txt")) {
+			BufferedReader br = new BufferedReader(fr);
+			for (String line = br.readLine(); line !=null; line = br.readLine()) {
+				String[] parts = line.split(";");
+				String[] crf = parts[2].split("/");
+
+				Craft c = new Craft(parts[0],parts[1],new Craft[][] {{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[1]),this.inventairePrincipal.getInventaire().get(crf[2])},{this.inventairePrincipal.getInventaire().get(crf[3]),this.inventairePrincipal.getInventaire().get(crf[4]),this.inventairePrincipal.getInventaire().get(crf[5])},{this.inventairePrincipal.getInventaire().get(crf[6]),this.inventairePrincipal.getInventaire().get(crf[7]),this.inventairePrincipal.getInventaire().get(crf[8])}},Type.valueOf(parts[3]),Boolean.getBoolean(parts[4]));
+				
+				this.inventairePrincipal.addCraft(c);
+			}
+		} catch (IOException e) {
+			System.err.format("IOException: %s%n", e);
+		}
+
 	}
 
 	public Craft[][] getTableCraft() {
 		return tableCraft;
 	}
-	
-		
+
+
 
 	public String toString() {
 		String s = "";
@@ -101,16 +105,17 @@ public class Modele extends Observable {
 	}
 
 	public Craft testCraft(int i,int j){
-		
-		for (int j2 = 0; j2 < this.tableCraft.length; j2++) {
-			for (int k = 0; k < this.tableCraft.length; k++) {
-				for (int k2 = 0; k2 < this.tableCraft[i][j].getEnfants().size(); k2++) {
+
+		for (int j2 = 0; j2 < this.tableCraft.length+1; j2++) {
+			for (int k = 0; k < this.tableCraft.length+1; k++) {
+				for (int k2 = 0; k2 < this.tableCraft[i][j].getEnfants().size()+1; k2++) {
 					if(Arrays.deepEquals(this.tableCraft,this.tableCraft[j2][k].getEnfants().get(k2).getMatrice())) {
 						return this.tableCraft[i][j].getEnfants().get(k);
 					}
 				}
 			}
 		}
+
 		Craft nofind = new Craft("non trouvé", "cross2.png", new Craft[3][3], Type.BASE, true );
 		return nofind;
 	}
@@ -118,8 +123,8 @@ public class Modele extends Observable {
 	public void setTableCraft(Craft[][] tableCraft) {
 		this.tableCraft = tableCraft;
 	}
-	
-	
+
+
 	//	public static void main(String[] args) {
 	//		
 	//		Modele mo = new Modele(new Inventaire());
