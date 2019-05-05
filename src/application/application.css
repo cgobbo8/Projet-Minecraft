@@ -94,7 +94,7 @@
 
 #caseCraft2{
     -fx-background-color: #1C1F22;
-    -fx-opacity:0.7;
+    -fx-opacity:0.85;
     -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 1 ), 10, -10, 5, 5 );
     -fx-background-radius: 5;
 }

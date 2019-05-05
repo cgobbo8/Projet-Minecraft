@@ -75,6 +75,46 @@ public class Inventaire {
 		}
 	}
 	
+	public ArrayList<Craft> getBloc() {
+		return bloc;
+	}
+
+	public void setBloc(ArrayList<Craft> bloc) {
+		this.bloc = bloc;
+	}
+
+	public ArrayList<Craft> getCombat() {
+		return combat;
+	}
+
+	public void setCombat(ArrayList<Craft> combat) {
+		this.combat = combat;
+	}
+
+	public ArrayList<Craft> getOutil() {
+		return outil;
+	}
+
+	public void setOutil(ArrayList<Craft> outil) {
+		this.outil = outil;
+	}
+
+	public ArrayList<Craft> getNourriture() {
+		return nourriture;
+	}
+
+	public void setNourriture(ArrayList<Craft> nourriture) {
+		this.nourriture = nourriture;
+	}
+
+	public ArrayList<Craft> getBase() {
+		return base;
+	}
+
+	public void setBase(ArrayList<Craft> base) {
+		this.base = base;
+	}
+
 	public HashMap<String, Craft> getInventaire() {
 		return this.inventaire;
 	}
