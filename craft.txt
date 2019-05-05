@@ -4,13 +4,10 @@ gold;ressources/crafts/gold_ingot.png;blanc/blanc/blanc/blanc/blanc/blanc/blanc/
 iron;ressources/crafts/iron_ingot.png;blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc;BASE;true
 cobble;ressources/crafts/cobblestone.png;blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc;BASE;true
 four;ressources/crafts/furnace_front_on.png;cobble/cobble/cobble/cobble/blanc/cobble/cobble/cobble/cobble;BASE;true
-redstone;ressources/crafts/redstone_dustblanc.png;/blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc;BASE;true
 gunpowder;ressources/crafts/gunpowder.png;blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc;BASE;true
 stick;ressources/crafts/stick.png;blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc;BASE;true
 wood;ressources/crafts/log_oak.png;blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc;BASE;true
-plank;ressources/crafts/plank_oak.png;blanc/blanc/wood/blanc/blanc/blanc/blanc/blanc/blanc;BLOC;false
-craftingTable;ressources/crafts/crafting_table_front;plank/plank/blanc/plank/plank/blanc/blanc/blanc/blanc;BASE;false
-furnace;ressources/crafts/furnace_front_on;cobble/cobble/cobble/cobble/blanc/cobble/cobble/cobble/cobble;BASE;false
-diamondSword;ressources/crafts/diamond_sword.png;blanc/diamond/blanc/blanc/diamond/blanc/blanc/stick/blanc;COMBAT;false
+plank;ressources/crafts/planks_oak.png;blanc/blanc/wood/blanc/blanc/blanc/blanc/blanc/blanc;BLOC;true
+craftingTable;ressources/crafts/crafting_table_front.png;plank/plank/blanc/plank/plank/blanc/blanc/blanc/blanc;BASE;true
+diamondSword;ressources/crafts/diamond_sword.png;blanc/diamond/blanc/blanc/diamond/blanc/blanc/stick/blanc;COMBAT;true
 diamondPickaxe;ressources/crafts/diamond_pickaxe.png;diamond/diamond/diamond/blanc/stick/blanc/blanc/stick/blanc;OUTIL;false
-drDavidPanzoli;item_super_rare.png;diamond/diamond/diamond/diamond/podzol/diamond/diamond/lit/diamond;NOURRITURE;false

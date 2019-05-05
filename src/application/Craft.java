@@ -100,6 +100,17 @@ public class Craft extends ImageView implements Cloneable{
 	public Craft[][] getMatrice(){
 		return this.matriceCraft;
 	}
+	
+	public String afficherMatrice() {
+		String s = "";
+		
+		for (int i = 0; i < matriceCraft.length; i++) {
+			for (int j = 0; j < matriceCraft.length; j++) {
+				s+= matriceCraft[i][j].getName() + " ";
+			}
+		}
+		return s;
+	}
 
 	public Type getType() {
 		return this.type;

@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -86,15 +87,15 @@ public class Controller implements Initializable {
 
 
 	ArrayList<BorderPane> listeBloc = new ArrayList<BorderPane>();
-	
+
 	ArrayList<BorderPane> listeTypeBloc = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listeTypeCombat = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listeTypeOutil = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listeTypeRedstone = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listeTypeDeco = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listeTypeBase = new ArrayList<BorderPane>();
-	
-	
+
+
 	BorderPane bp;
 	int caseX = 25;
 	int caseY = 80;
@@ -108,15 +109,9 @@ public class Controller implements Initializable {
 	double orgTranslateX, orgTranslateY;
 
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music.mp3").toExternalForm())); 
+
 	Craft blanc = new Craft("blanc", "blanc.png", new Craft[][] {{null,null,null},{null,null,null},{null,null,null},} ,Type.BASE,true) ;
 
-
-	Craft apple = new Craft("apple", "ressources/crafts/apple.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.NOURRITURE, true) ;
-	Craft diamond = new Craft("diamond", "ressources/crafts/diamond.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, true) ;
-
-	Craft cobble = new Craft("cobblestone", "ressources/crafts/cobblestone.png", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BLOC, true) ;
-	Craft four = new Craft("four", "ressources/crafts/furnace_front_on.png", new Craft [][] {{cobble,cobble,cobble},{cobble,blanc,cobble},{cobble,cobble,cobble}} , Type.BASE, false) ;
-	Craft craftTest = new Craft("bed", "bed.png",new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,cobble}},Type.BASE,true);
 
 	public Controller() {
 
@@ -134,9 +129,6 @@ public class Controller implements Initializable {
 
 		matriceInv.add(d1);matriceInv.add(d2);matriceInv.add(d3);matriceInv.add(d4);matriceInv.add(d5);matriceInv.add(d6);matriceInv.add(d7);matriceInv.add(d8);matriceInv.add(d9);
 
-		for (int i = 0; i < cobble.getParents().size(); i++) {
-			System.out.println(four.getParents().get(i).getName());
-		}
 
 		for (int i = 0; i < l.size(); i++) {
 			l.get(i).getBottom().setOpacity(0);
@@ -153,7 +145,7 @@ public class Controller implements Initializable {
 			}
 
 		} catch (NullPointerException e) {
-			System.out.println("bizarre");
+			System.out.println(e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -209,7 +201,14 @@ public class Controller implements Initializable {
 								lC.add(matriceCraft[j2][j3]);
 							}
 						}
+						
+						for (int j2 = 0; j2 < lC.size(); j2++) {
+							if (lC.get(j2).getName() != "blanc") {
+								matriceInv.get(j2).setCenter(null);	
+							}
 
+						}
+						
 						for (int j2 = 0; j2 < lC.size(); j2++) {
 							if (lC.get(j2).getName() != "blanc") {
 								matriceInv.get(j2).setCenter(lC.get(j2).clone());	
@@ -271,6 +270,8 @@ public class Controller implements Initializable {
 		@Override
 		public void handle(MouseEvent e) {
 			click(e);
+			Craft t =  (Craft) e.getTarget();
+			System.out.println(t.afficherMatrice());
 
 		}
 	};
@@ -279,49 +280,50 @@ public class Controller implements Initializable {
 		Craft copy = blanc.clone();
 		l.get(indextable).setCenter(copy);
 		this.modl.ajoutCraftDansTable(blanc);
-		indextable++;
-		if (indextable == 9) {
-			indextable = 0;
+
+		if (indextable < 9) {
+			indextable++;
 		}
 		curseur();
 
 	}
 
 	private void testcraftcontroller() {
-		if(this.modl.tableCraft[2][2] != null) {
-			for (int i = 0; i < this.modl.tableCraft.length; i++) {
-				for (int j = 0; j < this.modl.tableCraft.length; j++) {
-					Craft resultat=this.modl.testCraft(i,j);
-					resultat.setEstTrouve(true);
-					craftFinal.setCenter(resultat.clone());
-					this.modl.suppressionTable();
-					for (int k = 0; k < l.size(); k++) {
-						l.get(k).setCenter(null);
-					}
+		for (int i = 0; i < this.modl.tableCraft.length; i++) {
+			for (int j = 0; j < this.modl.tableCraft.length; j++) {
 
-					Craft craftInv;
-					listTest = new ArrayList<Craft>();
-					for (int k = 0; k < listeBlocInv.size(); k++) {
-						craftInv = (Craft) listeBlocInv.get(i).getCenter();
-						listTest.add(craftInv);
-					}
-					if (!listTest.contains(resultat)) {
-						listeBlocInv.get(indexInv).setCenter(resultat.clone());
-						indexInv++;
-						score++;
-						affScore.setText(score + "/100");
-
-						int prog = ((score*100)/scoreFinal)/100;
-						pg.setProgress(prog);
-						System.out.println(prog);
-
-					}else {
-						System.out.println("h");
-					}
-
+				Craft resultat=this.modl.testCraft(i,j);
+				resultat.setEstTrouve(true);
+				System.out.println(resultat.getName());
+				craftFinal.setCenter(resultat.clone());
+				this.modl.suppressionTable();
+				for (int k = 0; k < l.size(); k++) {
+					l.get(k).setCenter(null);
 				}
+
+				Craft craftInv;
+				listTest = new ArrayList<Craft>();
+				for (int k = 0; k < listeBlocInv.size(); k++) {
+					craftInv = (Craft) listeBlocInv.get(i).getCenter();
+					listTest.add(craftInv);
+				}
+				if (!listTest.contains(resultat)) {
+					listeBlocInv.get(indexInv).setCenter(resultat.clone());
+					indexInv++;
+					score++;
+					affScore.setText(score + "/100");
+
+					int prog = ((score*100)/scoreFinal)/100;
+					pg.setProgress(prog);
+					System.out.println(prog);
+
+				}else {
+					System.out.println("h");
+				}
+
 			}
 		}
+
 	}
 
 
@@ -333,19 +335,17 @@ public class Controller implements Initializable {
 	}
 
 	public void click(MouseEvent e) {
-
 		if(e.getTarget().getClass()==Craft.class && !flecheH ) {
-
 			this.modl.ajoutCraftDansTable((Craft) e.getTarget()); 
 			Craft copyCraft = (Craft) e.getTarget();
 			l.get(indextable).setCenter(copyCraft.clone());
-			indextable++;
-			if (indextable == 9) {
-				indextable = 0;
+
+			if (indextable < 9) {
+				indextable++;
 			}
+			System.out.println(indextable);
 
 			curseur();
-			testcraftcontroller();
 
 		}
 
@@ -359,20 +359,23 @@ public class Controller implements Initializable {
 			System.out.println(s);
 		} catch (NullPointerException e2) {
 			// TODO: handle exception
+		} catch (ClassCastException e2) {
+			// TODO: handle exception
 		}
-
 	}
 
 
-
-
-	public void crafting(Craft c) {
+	public void crafting() {
 		indextable = 0;
 		curseur();
+		testcraftcontroller();
+		this.modl.toString();
+		this.modl.suppressionTable();
 		for (int i = 0; i < l.size(); i++) {
-			l.get(i).setCenter(blanc.clone() );
+			l.get(i).setCenter(blanc.clone());
 		}
-		craftFinal.setCenter(c);
+
+
 	}
 
 	public void curseur() {

@@ -41,6 +41,7 @@ public class Inventaire {
 	public void addCraft(Craft a) {
 		
 		this.inventaire.put(a.getName(),a);
+		
 		if (a.getName() != "blanc") {
 			this.listeInventaire.add(a);
 		}

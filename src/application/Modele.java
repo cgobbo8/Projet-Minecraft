@@ -34,9 +34,10 @@ public class Modele extends Observable {
 				String[] parts = line.split(";");
 				String[] crf = parts[2].split("/");
 
-				Craft c = new Craft(parts[0],parts[1],new Craft[][] {{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[1]),this.inventairePrincipal.getInventaire().get(crf[2])},{this.inventairePrincipal.getInventaire().get(crf[3]),this.inventairePrincipal.getInventaire().get(crf[4]),this.inventairePrincipal.getInventaire().get(crf[5])},{this.inventairePrincipal.getInventaire().get(crf[6]),this.inventairePrincipal.getInventaire().get(crf[7]),this.inventairePrincipal.getInventaire().get(crf[8])}},Type.valueOf(parts[3]),Boolean.getBoolean(parts[4]));
-				
-				this.inventairePrincipal.addCraft(c);
+
+
+				this.inventairePrincipal.addCraft(new Craft(parts[0],parts[1],new Craft[][] {{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[1]),this.inventairePrincipal.getInventaire().get(crf[2])},{this.inventairePrincipal.getInventaire().get(crf[3]),this.inventairePrincipal.getInventaire().get(crf[4]),this.inventairePrincipal.getInventaire().get(crf[5])},{this.inventairePrincipal.getInventaire().get(crf[6]),this.inventairePrincipal.getInventaire().get(crf[7]),this.inventairePrincipal.getInventaire().get(crf[8])}},Type.valueOf(parts[3]),Boolean.getBoolean(parts[4])));
+
 			}
 		} catch (IOException e) {
 			System.err.format("IOException: %s%n", e);
@@ -106,13 +107,10 @@ public class Modele extends Observable {
 
 	public Craft testCraft(int i,int j){
 
-		for (int j2 = 0; j2 < this.tableCraft.length+1; j2++) {
-			for (int k = 0; k < this.tableCraft.length+1; k++) {
-				for (int k2 = 0; k2 < this.tableCraft[i][j].getEnfants().size()+1; k2++) {
-					if(Arrays.deepEquals(this.tableCraft,this.tableCraft[j2][k].getEnfants().get(k2).getMatrice())) {
-						return this.tableCraft[i][j].getEnfants().get(k);
-					}
-				}
+		for (int k2 = 0; k2 < this.tableCraft[i][j].getEnfants().size(); k2++) {
+			if(Arrays.deepEquals(this.tableCraft,this.tableCraft[i][j].getEnfants().get(k2).getMatrice())) {
+				System.out.println("trouvé");
+				return this.tableCraft[i][j].getEnfants().get(k2);
 			}
 		}
 
