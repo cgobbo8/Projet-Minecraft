@@ -50,7 +50,7 @@ public class Controller implements Initializable {
 	@FXML
 	private Tab tab1,tab2,tab3,tab4,tab5 = new Tab();
 	@FXML
-	private AnchorPane pane1,pane2,pane3,pane4,inventaireFinal,bgnoir2,casesInv;
+	private AnchorPane pane1,pane2,pane3,pane4,pane5,inventaireFinal,bgnoir2,casesInv;
 	@FXML
 	private BorderPane c1,c2,c3,c4,c5,c6,c7,c8,c9;
 	@FXML
@@ -86,14 +86,16 @@ public class Controller implements Initializable {
 	Button btn;
 
 
-	ArrayList<BorderPane> listeBloc = new ArrayList<BorderPane>();
+	ArrayList<BorderPane> listeToutElement = new ArrayList<BorderPane>();
 
 	ArrayList<BorderPane> listeTypeBloc = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listeTypeCombat = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listeTypeOutil = new ArrayList<BorderPane>();
-	ArrayList<BorderPane> listeTypeRedstone = new ArrayList<BorderPane>();
+	ArrayList<BorderPane> listeTypeNourriture = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listeTypeDeco = new ArrayList<BorderPane>();
 	ArrayList<BorderPane> listeTypeBase = new ArrayList<BorderPane>();
+	
+	ArrayList<String> listeCraftInventaire = new ArrayList<String>();
 
 
 	BorderPane bp;
@@ -110,7 +112,7 @@ public class Controller implements Initializable {
 
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music.mp3").toExternalForm())); 
 
-	Craft blanc = new Craft("blanc", "blanc.png", new Craft[][] {{null,null,null},{null,null,null},{null,null,null},} ,Type.BASE,true) ;
+	Craft blanc = new Craft("blanc", "blanc.png", new Craft[][] {{null,null,null},{null,null,null},{null,null,null},} ,Type.BLOC,true) ;
 
 
 	public Controller() {
@@ -151,13 +153,35 @@ public class Controller implements Initializable {
 			e.printStackTrace();
 		}
 
-		initialisationPane(pane1);
-		initialisationPane(pane2);
-		initialisationPane(pane3);
-		initialisationPane(pane4);
+		initialisationPane(pane1,listeTypeBase);
+		initialisationPane(pane2,listeTypeOutil);
+		initialisationPane(pane3,listeTypeNourriture);
+		initialisationPane(pane4,listeTypeCombat);
+		initialisationPane(pane5,listeToutElement);
 		initialisationPaneInv(casesInv);
 
-
+		for (int i = 0; i < this.modl.getInventairePrincipal().getListeInventaire().size(); i++) {
+			listeToutElement.get(i).setCenter(this.modl.getInventairePrincipal().getListeInventaire().get(i).clone());
+		}
+		
+		for (int i = 0; i < this.modl.getInventairePrincipal().getBase().size(); i++) {
+			if (this.modl.getInventairePrincipal().getBase().get(i).getName() != "blanc") {
+				listeTypeBase.get(i).setCenter(this.modl.getInventairePrincipal().getBase().get(i));
+			}
+			
+		}
+		
+		for (int i = 0; i < this.modl.getInventairePrincipal().getOutil().size(); i++) {
+			listeTypeOutil.get(i).setCenter(this.modl.getInventairePrincipal().getOutil().get(i));
+		}
+		
+		for (int i = 0; i < this.modl.getInventairePrincipal().getNourriture().size(); i++) {
+			listeTypeNourriture.get(i).setCenter(this.modl.getInventairePrincipal().getNourriture().get(i));
+		}
+		
+		for (int i = 0; i < this.modl.getInventairePrincipal().getCombat().size(); i++) {
+			listeTypeCombat.get(i).setCenter(this.modl.getInventairePrincipal().getCombat().get(i));
+		}
 
 		//		PEUT ETRE SERVIALBLE POUR LA SUITE 
 		/**
@@ -196,27 +220,21 @@ public class Controller implements Initializable {
 						Craft[][] matriceCraft = c.getMatrice();
 
 						ArrayList<Craft> lC = new ArrayList<Craft>();
+						
 						for (int j2 = 0; j2 < matriceCraft.length; j2++) {
 							for (int j3 = 0; j3 < matriceCraft.length; j3++) {
 								lC.add(matriceCraft[j2][j3]);
 							}
 						}
 						
-						for (int j2 = 0; j2 < lC.size(); j2++) {
-							if (lC.get(j2).getName() != "blanc") {
-								matriceInv.get(j2).setCenter(null);	
-							}
-
+						for (int j2 = 0; j2 < matriceInv.size(); j2++) {
+							matriceInv.get(j2).setCenter(null);
 						}
-						
 						for (int j2 = 0; j2 < lC.size(); j2++) {
 							if (lC.get(j2).getName() != "blanc") {
 								matriceInv.get(j2).setCenter(lC.get(j2).clone());	
 							}
-
 						}
-
-
 					}
 				});
 				listeBlocInv.add(bp);
@@ -224,11 +242,9 @@ public class Controller implements Initializable {
 			}
 			caseY+=55;
 		}
-
 	}
 
-
-	public void initialisationPane(AnchorPane a) {
+	public void initialisationPane(AnchorPane a,ArrayList<BorderPane> l) {
 		caseX = 20;
 		caseY = 80;
 		for (int i = 0; i < 6; i++) {
@@ -242,16 +258,15 @@ public class Controller implements Initializable {
 				bp.setLayoutY(caseY);
 				bp.setOnMouseClicked(detectCraft);
 				caseX+=55;
-				listeBloc.add(bp);
+				l.add(bp);
 				a.getChildren().add(bp);
 			}
 			caseY+=55;
 		}
 
-		System.out.println(this.modl.inventairePrincipal.getListeInventaire().size());
-		for (int i = 0; i < this.modl.inventairePrincipal.getListeInventaire().size(); i++) {
-			listeBloc.get(i).setCenter(this.modl.inventairePrincipal.getListeInventaire().get(i));
-		}
+//		for (int i = 0; i < this.modl.inventairePrincipal.getListeInventaire().size(); i++) {
+//			l.get(i).setCenter(this.modl.inventairePrincipal.getListeInventaire().get(i));
+//		}
 
 	}
 
@@ -295,19 +310,14 @@ public class Controller implements Initializable {
 				Craft resultat=this.modl.testCraft(i,j);
 				resultat.setEstTrouve(true);
 				System.out.println(resultat.getName());
-				craftFinal.setCenter(resultat.clone());
+				craftFinal.setCenter(resultat);
+				
 				this.modl.suppressionTable();
 				for (int k = 0; k < l.size(); k++) {
 					l.get(k).setCenter(null);
 				}
-
-				Craft craftInv;
-				listTest = new ArrayList<Craft>();
-				for (int k = 0; k < listeBlocInv.size(); k++) {
-					craftInv = (Craft) listeBlocInv.get(i).getCenter();
-					listTest.add(craftInv);
-				}
-				if (!listTest.contains(resultat)) {
+				
+				if (!listeCraftInventaire.contains(resultat.getName()) && resultat.getName() != "non trouvé") {
 					listeBlocInv.get(indexInv).setCenter(resultat.clone());
 					indexInv++;
 					score++;
@@ -320,6 +330,7 @@ public class Controller implements Initializable {
 				}else {
 					System.out.println("h");
 				}
+				listeCraftInventaire.add(resultat.getName());
 
 			}
 		}
