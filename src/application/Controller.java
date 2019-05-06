@@ -90,7 +90,7 @@ public class Controller implements Initializable {
 
 	ArrayList<Craft> listTest;
 
-	public int objetsNull = 5;
+	public int objetsNull = 10;
 	public int scoreBut; 
 
 
@@ -202,7 +202,13 @@ public class Controller implements Initializable {
 		}
 		
 		for (int i = 0; i < this.modl.getInventairePrincipal().getCombat().size(); i++) {
-			listeTypeCombat.get(i).setCenter(this.modl.getInventairePrincipal().getCombat().get(i));
+			String s1 = (this.modl.getInventairePrincipal().getCombat().get(i).getName().intern());
+			String s2 = new String("infinityGauntlet");
+			s2 = s2.intern();
+			if (s1 != s2 ) {
+				listeTypeCombat.get(i).setCenter(this.modl.getInventairePrincipal().getCombat().get(i));
+			}
+			
 		}
 		
 		scoreBut = this.modl.getInventairePrincipal().getListeInventaire().size() - objetsNull;
@@ -236,7 +242,7 @@ public class Controller implements Initializable {
 					public void handle(Event e) {
 						Craft c = (Craft) e.getTarget();
 						String s1 = c.getName().intern();
-						String s2 = new String("four");
+						String s2 = new String("infinityGauntlet");
 						s2 = s2.intern();
 						if (s1 == s2) {
 							music.stop();
@@ -410,7 +416,7 @@ public class Controller implements Initializable {
 					int prog = ((score*100)/scoreFinal)/100;
 					pg.setProgress(prog);
 					System.out.println(prog);
-					if (score == 2) {
+					if (score == 3) {
 						music.stop();
 						noirVideo.setVisible(true);
 						
