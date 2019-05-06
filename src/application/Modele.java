@@ -34,8 +34,6 @@ public class Modele extends Observable {
 				String[] parts = line.split(";");
 				String[] crf = parts[2].split("/");
 
-
-
 				this.inventairePrincipal.addCraft(new Craft(parts[0],parts[1],new Craft[][] {{this.inventairePrincipal.getInventaire().get(crf[0]),this.inventairePrincipal.getInventaire().get(crf[1]),this.inventairePrincipal.getInventaire().get(crf[2])},{this.inventairePrincipal.getInventaire().get(crf[3]),this.inventairePrincipal.getInventaire().get(crf[4]),this.inventairePrincipal.getInventaire().get(crf[5])},{this.inventairePrincipal.getInventaire().get(crf[6]),this.inventairePrincipal.getInventaire().get(crf[7]),this.inventairePrincipal.getInventaire().get(crf[8])}},Type.valueOf(parts[3]),Boolean.getBoolean(parts[4])));
 
 			}
@@ -121,31 +119,6 @@ public class Modele extends Observable {
 	public void setTableCraft(Craft[][] tableCraft) {
 		this.tableCraft = tableCraft;
 	}
-
-
-	//	public static void main(String[] args) {
-	//		
-	//		Modele mo = new Modele(new Inventaire());
-	//		//craft de base
-	//		Craft blanc = new Craft("blanc", "/Projet-Minecraft/crafts/apple", new Craft [][] {{null,null,null},{null,null,null},{null,null,null}} , Type.BASE, mo.inventairePrincipal,true) ;
-	//		Craft apple = new Craft("apple", "/Projet-Minecraft/crafts/apple", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.NOURRITURE, mo.inventairePrincipal,true) ;
-	//		Craft diamond = new Craft("diamond", "/Projet-Minecraft/crafts/diamond", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
-	//		Craft gold = new Craft("gold", "/Projet-Minecraft/crafts/gold_ingot", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
-	//		Craft iron = new Craft("iron", "/Projet-Minecraft/crafts/iron_ingot", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
-	//		Craft cobble = new Craft("cobblestone", "/Projet-Minecraft/crafts/cobblestone", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BLOC, mo.inventairePrincipal,true) ;
-	//		Craft redstone = new Craft("restone", "/Projet-Minecraft/crafts/redstone_dust", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
-	//		Craft gunpowder = new Craft("gunpowder", "/Projet-Minecraft/crafts/gunpowder", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
-	//		Craft stick = new Craft("stick", "/Projet-Minecraft/crafts/stick", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,true) ;
-	//		
-	//		
-	//		Craft planche = new Craft("planche", "/Projet-Minecraft/crafts/planks_oak", new Craft [][] {{blanc,blanc,blanc},{blanc,blanc,blanc},{blanc,blanc,blanc}} , Type.BLOC, mo.inventairePrincipal,false) ;
-	//		Craft craftingTable = new Craft("crafting Table", "/Projet-Minecraft/crafts/crafting_table_front", new Craft [][] {{planche,planche,blanc},{planche,planche,blanc},{blanc,blanc,blanc}} , Type.BASE, mo.inventairePrincipal,false) ;
-	//		Craft four = new Craft("four", "/Projet-Minecraft/crafts/furnace_front_on", new Craft [][] {{cobble,cobble,cobble},{cobble,blanc,cobble},{cobble,cobble,cobble}} , Type.BASE, mo.inventairePrincipal,false) ;
-	//		Craft diamondSword = new Craft("diamond Sword", "/Projet-Minecraft/crafts/diamond_sword", new Craft [][] {{blanc,diamond,blanc},{blanc,diamond,blanc},{blanc,stick,blanc}} , Type.COMBAT, mo.inventairePrincipal,false) ;
-	//		Craft diamondPickaxe = new Craft("diamond Pickaxe", "/Projet-Minecraft/crafts/diamond_pickaxe", new Craft [][] {{diamond,diamond,diamond},{blanc,stick,blanc},{blanc,stick,blanc}} , Type.OUTIL, mo.inventairePrincipal,false) ;
-	//		
-	//		
-	//	}
 
 	public Inventaire getInventairePrincipal() {
 		return inventairePrincipal;

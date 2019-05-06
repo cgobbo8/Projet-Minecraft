@@ -44,7 +44,7 @@ public class Controller implements Initializable {
 	@FXML
 	private Button btnplay,settings,exit,settingCancel,btnBlanc = new Button();
 	@FXML
-	private ImageView titre,imgFleche, imageCraft,endgame;
+	private ImageView theEnd,titre,imgFleche, imageCraft,endgame;
 	@FXML
 	private AnchorPane noirVideo,paneVideo,inventaire,background,bgopacity,panelSetting,menuprinc,matrice = new AnchorPane();
 	@FXML
@@ -74,6 +74,7 @@ public class Controller implements Initializable {
 	@FXML
 	public MediaView video;
 	public MediaPlayer mp;
+	public MediaPlayer mp2;
 	public Media me;
 
 
@@ -89,7 +90,8 @@ public class Controller implements Initializable {
 
 	ArrayList<Craft> listTest;
 
-	Button btn;
+	public int objetsNull = 5;
+	public int scoreBut; 
 
 
 	ArrayList<BorderPane> listeToutElement = new ArrayList<BorderPane>();
@@ -109,6 +111,7 @@ public class Controller implements Initializable {
 	int caseY = 80;
 	int indextable = 0;
 	int indexInv = 0;
+	int indexAjoutInv = 18;
 	public int score = 0;
 	Boolean flecheH = false;
 
@@ -118,6 +121,8 @@ public class Controller implements Initializable {
 
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music.mp3").toExternalForm())); 
 	MediaPlayer avengers = new MediaPlayer(new Media(getClass().getResource("ressources/avengers.mp3").toExternalForm())); 
+	MediaPlayer takemehome = new MediaPlayer(new Media(getClass().getResource("ressources/TakeMeHome.mp3").toExternalForm())); 
+
 
 
 	Craft blanc = new Craft("blanc", "blanc.png", new Craft[][] {{null,null,null},{null,null,null},{null,null,null},} ,Type.BLOC,true) ;
@@ -185,13 +190,23 @@ public class Controller implements Initializable {
 		}
 		
 		for (int i = 0; i < this.modl.getInventairePrincipal().getNourriture().size(); i++) {
-			listeTypeNourriture.get(i).setCenter(this.modl.getInventairePrincipal().getNourriture().get(i));
+			String s1 = this.modl.getInventairePrincipal().getNourriture().get(i).getName().intern();
+			String s2 = new String("drDavidPanzoli");
+			String s3 = new String("coachPestana");
+			s2 = s2.intern();
+			s3 = s3.intern();
+			if (s1 != s2 && s1 != s3 ) {
+				listeTypeNourriture.get(i).setCenter(this.modl.getInventairePrincipal().getNourriture().get(i));
+			}
+			
 		}
 		
 		for (int i = 0; i < this.modl.getInventairePrincipal().getCombat().size(); i++) {
 			listeTypeCombat.get(i).setCenter(this.modl.getInventairePrincipal().getCombat().get(i));
 		}
-
+		
+		scoreBut = this.modl.getInventairePrincipal().getListeInventaire().size() - objetsNull;
+		
 		//		PEUT ETRE SERVIALBLE POUR LA SUITE 
 		/**
 		tab1.setOnSelectionChanged(new EventHandler<Event>() {
@@ -201,7 +216,7 @@ public class Controller implements Initializable {
 			}
 		});**/
 	}
-
+	
 	public void initialisationPaneInv(AnchorPane a) {
 		caseX = 50;
 		caseY = 10;
@@ -253,7 +268,7 @@ public class Controller implements Initializable {
 										public void handle(ActionEvent event) {
 											endgame.setVisible(true);
 											
-											FadeTransition opacity = new FadeTransition(Duration.millis(2000), endgame);
+											FadeTransition opacity = new FadeTransition(Duration.millis(8000), endgame);
 											opacity.setFromValue(0);
 											opacity.setToValue(1);
 											opacity.play();
@@ -320,10 +335,6 @@ public class Controller implements Initializable {
 			caseY+=55;
 		}
 
-//		for (int i = 0; i < this.modl.inventairePrincipal.getListeInventaire().size(); i++) {
-//			l.get(i).setCenter(this.modl.inventairePrincipal.getListeInventaire().get(i));
-//		}
-
 	}
 
 
@@ -358,7 +369,8 @@ public class Controller implements Initializable {
 		curseur();
 
 	}
-
+	String s1;
+	String s2;
 	private void testcraftcontroller() {
 		for (int i = 0; i < this.modl.tableCraft.length; i++) {
 			for (int j = 0; j < this.modl.tableCraft.length; j++) {
@@ -373,15 +385,74 @@ public class Controller implements Initializable {
 					l.get(k).setCenter(null);
 				}
 				
+				s1 = resultat.getName().intern();
+				s2 = new String("coachPestana");
+				s2 = s2.intern();
+				if (s1 == s2) {
+					listeTypeBase.get(indexAjoutInv).setCenter(resultat.clone());
+					indexAjoutInv++;
+				}
+
+				s2 = new String("drDavidPanzoli");
+				s2 = s2.intern();
+				if (s1 == s2) {
+					listeTypeBase.get(indexAjoutInv).setCenter(resultat.clone());
+					indexAjoutInv++;
+				}
+				
 				if (!listeCraftInventaire.contains(resultat.getName()) && resultat.getName() != "non trouvé") {
 					listeBlocInv.get(indexInv).setCenter(resultat.clone());
 					indexInv++;
 					score++;
-					affScore.setText(score + "/" + this.modl.getInventairePrincipal().getListeInventaire().size());
+					
+					affScore.setText(score + "/" + scoreBut);
 
 					int prog = ((score*100)/scoreFinal)/100;
 					pg.setProgress(prog);
 					System.out.println(prog);
+					if (score == 2) {
+						music.stop();
+						noirVideo.setVisible(true);
+						
+						FadeTransition opacity = new FadeTransition(Duration.millis(2000), noirVideo);
+						opacity.setFromValue(0);
+						opacity.setToValue(1);
+						opacity.play();
+						opacity.setOnFinished(new EventHandler<ActionEvent>() {
+
+							@Override
+							public void handle(ActionEvent event) {
+								paneVideo.setVisible(true);
+								String path = new File("src/application/ressources/fin1.mp4").getAbsolutePath();
+								mp = new MediaPlayer(new Media(new File(path).toURI().toString()));
+								mp.setVolume(0);
+								video.setMediaPlayer(mp);
+								mp.setAutoPlay(true);
+								
+								theEnd.setVisible(true);
+								FadeTransition opacity = new FadeTransition(Duration.millis(8000), theEnd);
+								opacity.setFromValue(0);
+								opacity.setToValue(0);
+								opacity.play();
+								takemehome.play();
+								opacity.setOnFinished(new EventHandler<ActionEvent>() {
+
+									@Override
+									public void handle(ActionEvent event) {
+										theEnd.setVisible(true);
+										
+										FadeTransition opacity = new FadeTransition(Duration.millis(4000), theEnd);
+										opacity.setFromValue(0);
+										opacity.setToValue(1);
+										opacity.play();
+										
+									}
+								});
+							}
+						});
+						
+
+					}
 
 				}else {
 					System.out.println("h");
