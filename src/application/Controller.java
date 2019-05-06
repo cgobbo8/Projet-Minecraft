@@ -310,7 +310,7 @@ public class Controller implements Initializable {
 				Craft resultat=this.modl.testCraft(i,j);
 				resultat.setEstTrouve(true);
 				System.out.println(resultat.getName());
-				craftFinal.setCenter(resultat);
+				craftFinal.setCenter(resultat.clone());
 				
 				this.modl.suppressionTable();
 				for (int k = 0; k < l.size(); k++) {
