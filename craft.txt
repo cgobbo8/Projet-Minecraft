@@ -14,7 +14,7 @@ diamondSword;ressources/crafts/diamond_sword.png;blanc/diamond/blanc/blanc/diamo
 diamondPickaxe;ressources/crafts/diamond_pickaxe.png;diamond/diamond/diamond/blanc/stick/blanc/blanc/stick/blanc;OUTIL;false
 GoldenApple;ressources/crafts/apple_golden.png;gold/gold/gold/gold/apple/gold/gold/gold/gold;NOURRITURE;false
 laine;ressources/crafts/iron_block.png;blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc;BASE;true
-podzol;ressources/crafts/podzol.png;blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc;BASE;false
+podzol;ressources/crafts/podzol2.png;blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc/blanc;BASE;false
 lit;ressources/crafts/bed.png;laine/laine/laine/plank/plank/plank/blanc/blanc/blanc;BASE;false
 diamondBlock;ressources/crafts/diamond_block.png;diamond/diamond/diamond/diamond/diamond/diamond/diamond/diamond/diamond;BASE;false
 diamondAxe;ressources/crafts/diamond_axe.png;blanc/diamond/diamond/blanc/stick/diamond/blanc/stick/blanc;OUTIL;false

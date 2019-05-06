@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
@@ -27,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -42,9 +44,9 @@ public class Controller implements Initializable {
 	@FXML
 	private Button btnplay,settings,exit,settingCancel,btnBlanc = new Button();
 	@FXML
-	private ImageView titre,imgFleche, imageCraft;
+	private ImageView titre,imgFleche, imageCraft,endgame;
 	@FXML
-	private AnchorPane inventaire,background,bgopacity,panelSetting,menuprinc,matrice = new AnchorPane();
+	private AnchorPane noirVideo,paneVideo,inventaire,background,bgopacity,panelSetting,menuprinc,matrice = new AnchorPane();
 	@FXML
 	private TabPane elementBasis = new TabPane();
 	@FXML
@@ -69,6 +71,10 @@ public class Controller implements Initializable {
 	public Label scoreCraft, nomCraft, labelTest, affScore;
 	@FXML
 	public ProgressBar pg;
+	@FXML
+	public MediaView video;
+	public MediaPlayer mp;
+	public Media me;
 
 
 	ArrayList<BorderPane> l = new ArrayList<BorderPane>();
@@ -111,6 +117,8 @@ public class Controller implements Initializable {
 	double orgTranslateX, orgTranslateY;
 
 	MediaPlayer music = new MediaPlayer(new Media(getClass().getResource("ressources/music.mp3").toExternalForm())); 
+	MediaPlayer avengers = new MediaPlayer(new Media(getClass().getResource("ressources/avengers.mp3").toExternalForm())); 
+
 
 	Craft blanc = new Craft("blanc", "blanc.png", new Craft[][] {{null,null,null},{null,null,null},{null,null,null},} ,Type.BLOC,true) ;
 
@@ -121,6 +129,7 @@ public class Controller implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		tab5.setTooltip(new Tooltip("Tous les elements"));
 		tab2.setTooltip(new Tooltip("Tous les outils"));
 		tab3.setTooltip(new Tooltip("Toute la nourriture"));
@@ -211,6 +220,51 @@ public class Controller implements Initializable {
 					@Override
 					public void handle(Event e) {
 						Craft c = (Craft) e.getTarget();
+						String s1 = c.getName().intern();
+						String s2 = new String("four");
+						s2 = s2.intern();
+						if (s1 == s2) {
+							music.stop();
+							noirVideo.setVisible(true);
+							
+							FadeTransition opacity = new FadeTransition(Duration.millis(2000), noirVideo);
+							opacity.setFromValue(0);
+							opacity.setToValue(1);
+							opacity.play();
+							opacity.setOnFinished(new EventHandler<ActionEvent>() {
+
+								@Override
+								public void handle(ActionEvent event) {
+									paneVideo.setVisible(true);
+									String path = new File("src/application/ressources/snap.mp4").getAbsolutePath();
+									mp = new MediaPlayer(new Media(new File(path).toURI().toString()));
+									video.setMediaPlayer(mp);
+									mp.setAutoPlay(true);
+									
+									endgame.setVisible(true);
+									FadeTransition opacity = new FadeTransition(Duration.millis(4000), endgame);
+									opacity.setFromValue(0);
+									opacity.setToValue(0);
+									opacity.play();
+									avengers.play();
+									opacity.setOnFinished(new EventHandler<ActionEvent>() {
+
+										@Override
+										public void handle(ActionEvent event) {
+											endgame.setVisible(true);
+											
+											FadeTransition opacity = new FadeTransition(Duration.millis(2000), endgame);
+											opacity.setFromValue(0);
+											opacity.setToValue(1);
+											opacity.play();
+											
+										}
+									});
+								}
+							});
+							
+
+						}
 						System.out.println(c.getName());
 						nomCraft.setText(c.getName());
 
@@ -235,6 +289,8 @@ public class Controller implements Initializable {
 								matriceInv.get(j2).setCenter(lC.get(j2).clone());	
 							}
 						}
+						
+						
 					}
 				});
 				listeBlocInv.add(bp);
@@ -321,7 +377,7 @@ public class Controller implements Initializable {
 					listeBlocInv.get(indexInv).setCenter(resultat.clone());
 					indexInv++;
 					score++;
-					affScore.setText(score + "/100");
+					affScore.setText(score + "/" + this.modl.getInventairePrincipal().getListeInventaire().size());
 
 					int prog = ((score*100)/scoreFinal)/100;
 					pg.setProgress(prog);
